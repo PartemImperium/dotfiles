@@ -1,1 +1,11 @@
+# Easier navigation: .., ..., ...., ....., ~ and -
+alias -- -="cd -"
+alias ~~="cd ~"
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+
+#Fix typo (and make funny new way to reboot)
 alias rebooty=reboot
