@@ -1,3 +1,6 @@
+#Allow sudo to use aliases http://www.shellperson.net/using-sudo-with-an-alias/
+alias sudo="sudo "
+
 # Easier navigation: .., ..., ...., ....., ~ and -
 alias -- -="cd -"
 alias ~~="cd ~"
