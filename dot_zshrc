@@ -13,6 +13,9 @@ source "${ZIT_MODULES_PATH}/zit/zit.zsh"
 
 zit-install-load "https://github.com/romkatv/powerlevel10k.git" "powerline10k" "powerlevel10k.zsh-theme"
 
+zit-install "https://github.com/dylanaraps/neofetch" "neofetch"
+~/.zsh-modules/neofetch/neofetch
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
