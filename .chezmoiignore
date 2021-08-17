@@ -1,0 +1,9 @@
+{{ if ne .chezmoi.os "darwin" }}
+#TODO: Do macos specific things here
+{{ end }}
+{{ if ne .chezmoi.os "linux" }}
+#TODO: Do linux specific things here
+{{ end }}
+
+#Dont apply images to ~
+images
