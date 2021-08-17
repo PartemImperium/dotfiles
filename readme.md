@@ -38,6 +38,7 @@
     <li><a href="#test-it-out">Test it Out</a></li>
     <li><a href="#making-changes">Making Changes</a></li>
     <li><a href="#screenshots">Screenshots</a></li>
+    <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
 </details>
 
@@ -130,6 +131,14 @@ chezmoi update
 
 ### Ubuntu (WSL)
 ![](images/ubuntu-wsl-screenshot.png)
+
+<!-- ACKNOWLEDGEMENTS -->
+## Acknowledgements
+
+* Example chezmoi dotfile repo's
+    * [GitHub](https://github.com/topics/chezmoi?o=desc&s=updated)
+    * [GitLab](https://gitlab.com/search?search=chezmoi)
+* [Good starter readme](https://github.com/othneildrew/Best-README-Template)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
