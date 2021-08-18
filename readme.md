@@ -142,11 +142,11 @@ chezmoi update
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/PartemImperium/repo.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/PartemImperium/dotfiles.svg?style=for-the-badge
 [contributors-url]: https://github.com/PartemImperium/dotfiles/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/PartemImperium/repo.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/PartemImperium/dotfiles.svg?style=for-the-badge
 [forks-url]: https://github.com/PartemImperium/dotfiles/network/members
-[stars-shield]: https://img.shields.io/github/stars/PartemImperium/repo.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/PartemImperium/dotfiles.svg?style=for-the-badge
 [stars-url]: https://github.com/PartemImperium/dotfiles/stargazers
-[issues-shield]: https://img.shields.io/github/issues/PartemImperium/repo.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/PartemImperium/dotfiles.svg?style=for-the-badge
 [issues-url]: https://github.com/PartemImperium/dotfiles/issues
