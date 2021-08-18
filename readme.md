@@ -132,6 +132,10 @@ chezmoi update
 ### Ubuntu (WSL)
 ![](images/ubuntu-wsl-screenshot.png)
 
+### Ubuntu Terminal
+In the default terminal when only 8 colors exist (and icon fonts wont work) the theme reacts and still shows all the same data (just a little less flashy). The screenshot was taken in a normal terminal emulator specifying it was the default terminal so the neoFetch still had showed 16 colors.
+![](images/ubuntu-terminal-screenshot.png)
+
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 
