@@ -28,5 +28,6 @@ fi
 
 zit-install-load "https://github.com/marlonrichert/zsh-autocomplete.git#main" "zsh-autocomplete" "zsh-autocomplete.plugin.zsh"
 zit-install-load "https://github.com/peterhurford/git-it-on.zsh" "git-it-on" "git-it-on.plugin.zsh"
+zit-install-load "https://github.com/zdharma/fast-syntax-highlighting" "fast-syntax-highlighting" "fast-syntax-highlighting.plugin.zsh"
 
 source ~/.aliases
