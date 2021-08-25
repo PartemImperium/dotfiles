@@ -57,10 +57,12 @@ A single source for all my dotfiles to be applied to my machines. These will be 
 * [powerline10k](https://github.com/romkatv/powerlevel10k) - zsh theme
 * [zsh-autocomplete](https://github.com/marlonrichert/zsh-autocomplete.git) - auto complete on steroids.
 * [git-it-on](https://github.com/peterhurford/git-it-on.zsh) - Commands to open github/gitlab from your working directory (when it is a git repo).
+* [fast-syntax-highlighting](https://github.com/zdharma/fast-syntax-highlighting) - Customizible syntax highlighting.
 
 ### Other installed tools
 * [neoFetch](https://github.com/dylanaraps/neofetch) - Shows system info with cool ascii art for your distro on login.
 * My [aliases](dot_aliases) - My personal aliases for zsh (should work in bash as well)
+* My [functions](dot_functions) - My personal functions for zsh. *.zsh gets loaded and compiled.
 
 <!-- GETTING STARTED -->
 ## Getting Started
