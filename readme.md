@@ -64,6 +64,11 @@ A single source for all my dotfiles to be applied to my machines. These will be 
 * My [aliases](dot_aliases) - My personal aliases for zsh (should work in bash as well)
 * My [functions](dot_functions) - My personal functions for zsh. *.zsh gets loaded and compiled.
 
+### Configurations managed
+* .zshrc
+* .p10k.zsh
+* .gitconfig
+  * Creates a .HOSTNAME.gitignore file and imports it allowing you to put things that you dont want on github in your config (work git info).
 <!-- GETTING STARTED -->
 ## Getting Started
 
@@ -135,7 +140,7 @@ chezmoi update
 ![](images/ubuntu-wsl-screenshot.png)
 
 ### Ubuntu Terminal
-In the default terminal when only 8 colors exist (and icon fonts wont work) the theme reacts and still shows all the same data (just a little less flashy). The screenshot was taken in a normal terminal emulator specifying it was the default terminal so the neoFetch still had showed 16 colors.
+In the default terminal when only 8 colors exist (and icon fonts wont work) the theme reacts and still shows all the same data (just a little less flashy). The screenshot was taken in a normal terminal emulator specifying it was the default terminal so neoFetch still shows 16 colors.
 ![](images/ubuntu-terminal-screenshot.png)
 
 <!-- ACKNOWLEDGEMENTS -->

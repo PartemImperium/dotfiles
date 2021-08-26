@@ -1,0 +1,7 @@
+[push]
+default = current
+
+
+#Include any machine specific git configuration. This can be used for work config that I dont want checked into GitHub
+[include]
+path = ~/.{{ .chezmoi.hostname }}.gitconfig
