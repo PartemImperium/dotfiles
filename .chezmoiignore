@@ -7,3 +7,8 @@
 
 #Dont apply images to ~
 images
+
+#Dont apply testing dockerfiles to ~
+dockerfiles
+
+readme.md

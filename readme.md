@@ -94,6 +94,8 @@ sh -c "$(curl -fsLS git.io/chezmoi)" -- init --apply PartemImperium
 ```
 
 ## Test it Out
+#TODO: Change this out to reflect using the Dockerfile
+
 If you want to try out before running it on your machine you can use one of the following docker containers to see what it will do. As soon as you exit out of the container it will stop and all changes will be reverted.
 
 You can use whichever base image you perfer (any base image will do but I have examples for both Alpine and Ubuntu). The below commands start the docker container in a interactive colorized terminal (and auto installs/updates the needed tools) that self destructs when you exit the container.
@@ -150,6 +152,9 @@ In the default terminal when only 8 colors exist (and icon fonts wont work) the 
     * [GitHub](https://github.com/topics/chezmoi?o=desc&s=updated)
     * [GitLab](https://gitlab.com/search?search=chezmoi)
 * [Good starter readme](https://github.com/othneildrew/Best-README-Template)
+* [Helpful guide to get Nix working in docker](https://aaronlevin.ca/post/100703631408/installing-nix-within-a-docker-container)
+* [Install script used as a base for installing Nix and chezmoi in a one liner](https://github.com/tapayne88/dotfiles/blob/master/public/install.sh)
+
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->

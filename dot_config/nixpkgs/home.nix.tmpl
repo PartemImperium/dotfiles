@@ -1,0 +1,70 @@
+    { pkgs, ... }:
+
+    let
+    unstable = import <nixpkgs-unstable> { config = pkgs.config; };
+    nixgl = import <nixgl> { pkgs = unstable; };
+
+    #Package Lists.
+    #Each list can be added to the home.packages array wth a ++. 
+    #I havent yet decided the mechanism for handling what lists to add (it will likly be Chezmoi in some way)
+
+    videoUtils = with pkgs; [
+        makemkv# I still need to get config all set up for this one
+        ffmpeg
+        handbrake
+        youtube-dl
+
+        #arm (automatic ripping machine). It doesnt exist currently might be a good opertunity for me to add a package to nix
+    ];
+
+    audioUtils = with pkgs; [
+        flac
+    ];
+
+    audioApps = with pkgs;[
+        picard
+    ];
+
+    apps = with pkgs; [
+        vscode # Add a overlay that adds any vsc extension I would want https://nixos.wiki/wiki/Vscode
+        vlc
+    ];
+
+    imageApps = with pkgs;[
+        gimp
+    ];
+    in
+
+    {
+    # Let Home Manager install and manage itself.
+    programs.home-manager.enable = true;
+
+    # Home Manager needs a bit of information about you and the
+    # paths it should manage.
+    home.username = "{{ .chezmoi.username }}";#TODO: Make the user the current user from chezmoi
+    home.homeDirectory = "/home/{{ .chezmoi.username }}";
+
+    # This value determines the Home Manager release that your
+    # configuration is compatible with. This helps avoid breakage
+    # when a new Home Manager release introduces backwards
+    # incompatible changes.
+    #
+    # You can update Home Manager without changing this value. See
+    # the Home Manager release notes for a list of state version
+    # changes in each release.
+    home.stateVersion = "21.05";
+
+    home.packages = with pkgs; [
+        zsh                           # shell
+        chezmoi
+        git
+        curl
+        nano
+        bat
+        glow
+        neoFetch
+        nerdfonts
+    ] 
+      #++ videoUtils
+      ;
+}
