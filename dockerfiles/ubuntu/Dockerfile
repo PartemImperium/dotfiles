@@ -25,4 +25,5 @@ ADD install.sh ./
 RUN ./install.sh
 RUN rm install.sh   
 
+#Docker doesnt seem to like the nix script that adds the nix profile to PATH so call zsh from our local profile
 CMD [".nix-profile/bin/zsh"]
