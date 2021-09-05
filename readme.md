@@ -94,26 +94,20 @@ sh -c "$(curl -fsLS git.io/chezmoi)" -- init --apply PartemImperium
 ```
 
 ## Test it Out
-#TODO: Change this out to reflect using the Dockerfile
-
 If you want to try out before running it on your machine you can use one of the following docker containers to see what it will do. As soon as you exit out of the container it will stop and all changes will be reverted.
 
-You can use whichever base image you perfer (any base image will do but I have examples for both Alpine and Ubuntu). The below commands start the docker container in a interactive colorized terminal (and auto installs/updates the needed tools) that self destructs when you exit the container.
+You can use whichever base image you perfer (any base image will do but you will need to go through the process of adding a new user because nix cant be installed as root). You first need to build the image then run it. The below commands will build and then start the docker container in a interactive colorized terminal (and auto installs/updates the needed tools) that self destructs when you exit the container.
 
 ### Alpine
 ```zsh
-docker run -e TERM -e COLORTERM -it --rm alpine sh -uec '
-  apk update
-  apk add git zsh nano curl bash
-  exec zsh'
+docker build -t dotfiles-alpine  https://github.com/PartemImperium/dotfiles.git#feature/add-nix-and-docker-support -f dockerfiles/alpine/Dockerfile
+docker run -e TERM -e COLORTERM -it --rm dotfiles-alpine
 ```
 
 ### Ubuntu
 ```zsh
-docker run -e TERM -e COLORTERM -it --rm ubuntu sh -uec '
-  apt-get update
-  apt-get install git zsh nano curl bash
-  exec zsh'
+docker build -t dotfiles-ubuntu  https://github.com/PartemImperium/dotfiles.git#feature/add-nix-and-docker-support -f dockerfiles/ubuntu/Dockerfile
+docker run -e TERM -e COLORTERM -it --rm dotfiles-ubuntu
 ```
 After you are in the interactive docker container run the command from the [installation instructions](#installation) to apply the files. After that finishes to see the effect of the dotfiles you will have to launch a new instance of zsh 
 ```zsh
