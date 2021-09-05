@@ -44,5 +44,5 @@ done;
 ZIT_MODULES_PATH=$NORMAL_ZIT_MODULES_PATH;
 zit-load "zit" "extras/compile-zsh-files.zsh";
 
-source "~/.nix-profile/etc/profile.d/nix.sh";
-source "~/.nix-profile/etc/profile.d/hm-session-vars.sh";
+source "$HOME/.nix-profile/etc/profile.d/nix.sh";
+source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh";

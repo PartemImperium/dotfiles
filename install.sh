@@ -80,4 +80,4 @@ export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH;
 #chezmoi is installed now but still not configured so we need to run this
 . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh";
 
-chezmoi init --apply PartemImperium --branch=feature/add-nix-and-docker-support; #TODO: Make way to grab specific branch
+chezmoi init --apply PartemImperium --branch "feature/add-nix-and-docker-support"; #TODO: Make way to grab specific branch
