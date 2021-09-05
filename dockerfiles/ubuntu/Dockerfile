@@ -21,7 +21,7 @@ ENV USER dockeruser
 # Change our working directory to $HOME
 WORKDIR /home/dockeruser
 
-ADD ../../install.sh ./
+ADD install.sh ./
 RUN ./install.sh
 RUN rm install.sh   
 
