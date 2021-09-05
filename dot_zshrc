@@ -4,6 +4,8 @@
 NORMAL_ZIT_MODULES_PATH="${HOME}/.zsh-modules";
 export ZIT_MODULES_PATH=$NORMAL_ZIT_MODULES_PATH;
 
+source "$HOME/.nix-profile/etc/profile.d/nix.sh";
+source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh";
 
 # If Zit is not found, clone it
 if [[ ! -d "${ZIT_MODULES_PATH}/zit" ]]; then
@@ -43,6 +45,3 @@ done;
 # Re-set the zit modules path and enable plugin compilation
 ZIT_MODULES_PATH=$NORMAL_ZIT_MODULES_PATH;
 zit-load "zit" "extras/compile-zsh-files.zsh";
-
-source "$HOME/.nix-profile/etc/profile.d/nix.sh";
-source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh";

@@ -25,4 +25,4 @@ ADD install.sh ./
 RUN ./install.sh
 RUN rm install.sh   
 
-CMD ["zsh"]
+CMD [".nix-profile/bin/zsh"]
