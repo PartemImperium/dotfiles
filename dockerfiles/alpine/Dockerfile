@@ -21,8 +21,10 @@ ENV USER dockeruser
 # Change our working directory to $HOME
 WORKDIR /home/dockeruser
 
+ARG branch master;
+
 ADD install.sh ./
-RUN ./install.sh
+RUN ./install.sh --branch $branch
 RUN rm install.sh   
 
 #Docker doesnt seem to like the nix script that adds the nix profile to PATH so call zsh from our local profile

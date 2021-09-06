@@ -109,14 +109,7 @@ docker run -e TERM -e COLORTERM -it --rm dotfiles-alpine
 docker build -t dotfiles-ubuntu  https://github.com/PartemImperium/dotfiles.git#feature/add-nix-and-docker-support -f dockerfiles/ubuntu/Dockerfile
 docker run -e TERM -e COLORTERM -it --rm dotfiles-ubuntu
 ```
-After you are in the interactive docker container run the command from the [installation instructions](#installation) to apply the files. After that finishes to see the effect of the dotfiles you will have to launch a new instance of zsh 
-```zsh
-zsh
-```
-or source the .zshrc file if you already in a zsh shell
-```zsh
-source ~/.zshrc
-```
+
 ## Making Changes
 To make changes I make the changes in a new branch and then run them in a docker container as explained in [Test it Out](#test-it-out) with a slight modification to the instalation command that checks out a specifc branch instead of the default master branch.
 ```zsh
