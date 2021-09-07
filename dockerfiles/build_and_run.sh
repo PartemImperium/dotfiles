@@ -21,5 +21,5 @@ gitUrl="https://github.com/PartemImperium/dotfiles.git#$branch";
 dockerTag="dotfiles-$distro";
 dockerFile="dockerfiles/$distro/Dockerfile";
 
-docker build -t $dockerTag $gitUrl -f $dockerFile
-docker run -e TERM -e COLORTERM -it --rm $dockerTag
+docker build -t $dockerTag $gitUrl -f $dockerFile --build-arg branch=$branch;
+docker run -e TERM -e COLORTERM -it --rm $dockerTag;
