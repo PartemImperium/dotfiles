@@ -96,6 +96,7 @@ export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH;
 #chezmoi is installed now but still not configured so we need to run this
 . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh";
 
+echo "Setting up chezmoi from branch '$branch'";
 chezmoi init --apply PartemImperium --branch $branch;
 
 home-manager switch;
