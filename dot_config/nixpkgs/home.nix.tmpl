@@ -9,29 +9,27 @@
     #I havent yet decided the mechanism for handling what lists to add (it will likly be Chezmoi in some way)
 
     videoUtils = with pkgs; [
-        makemkv# I still need to get config all set up for this one
-        ffmpeg
-        handbrake
-        youtube-dl
-
-        #arm (automatic ripping machine). It doesnt exist currently might be a good opertunity for me to add a package to nix
+        makemkv      # bluray ripping tool # I still need to get config all set up for this one
+        ffmpeg       # video encoder
+        handbrake    # video encoder
+        youtube-dl   # cli tool to download videos from youtube and other online sites
     ];
 
     audioUtils = with pkgs; [
-        flac
+        flac # cli tool to encode audio files as flac
     ];
 
     audioApps = with pkgs;[
-        picard
+        picard # audio tagging program
     ];
 
     apps = with pkgs; [
-        vscode # Add a overlay that adds any vsc extension I would want https://nixos.wiki/wiki/Vscode
-        vlc
+        vscode # text editor on steroids # Add a overlay that adds any vsc extension I would want https://nixos.wiki/wiki/Vscode
+        vlc    # audio and video player 
     ];
 
     imageApps = with pkgs;[
-        gimp
+        gimp # free image editing utility much like photoshop
     ];
     in
 
@@ -41,7 +39,7 @@
 
     # Home Manager needs a bit of information about you and the
     # paths it should manage.
-    home.username = "{{ .chezmoi.username }}";#TODO: Make the user the current user from chezmoi
+    home.username = "{{ .chezmoi.username }}";
     home.homeDirectory = "/home/{{ .chezmoi.username }}";
 
     # This value determines the Home Manager release that your
@@ -57,14 +55,14 @@
     fonts.fontconfig.enable = true;
     
     home.packages = with pkgs; [
-        zsh                           # shell
-        chezmoi
-        git
-        curl
-        nano
-        bat
-        glow
-        (nerdfonts.override { fonts = ["Hack"]; enableWindowsFonts = true;})
+        zsh                                                                    # shell
+        chezmoi                                                                # dotfiles manager
+        git                                                                    # source control
+        curl                                                                   # cli tool to download files
+        nano                                                                   # cli text editor
+        bat                                                                    # cat clone on steroids
+        glow                                                                   # cli markdown renderer
+        (nerdfonts.override { fonts = ["Hack"]; enableWindowsFonts = true; })  # Hack font with several font icon sets patched
     ] 
       #++ videoUtils
       ;
