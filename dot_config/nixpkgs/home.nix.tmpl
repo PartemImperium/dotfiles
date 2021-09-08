@@ -53,7 +53,9 @@
     # the Home Manager release notes for a list of state version
     # changes in each release.
     home.stateVersion = "21.05";
-
+    
+    fonts.fontconfig.enable = true;
+    
     home.packages = with pkgs; [
         zsh                           # shell
         chezmoi
@@ -62,7 +64,7 @@
         nano
         bat
         glow
-        nerdfonts
+        (nerdfonts.override { fonts = ["Hack"]; enableWindowsFonts = true;})
     ] 
       #++ videoUtils
       ;
