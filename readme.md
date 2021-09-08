@@ -48,38 +48,36 @@ A single source for all my dotfiles to be applied to my machines. These will be 
 
 
 ### Built With
-
+* [nix](https://github.com/NixOS/nixpkgs) - package manager
+* [home-manager](https://github.com/nix-community/home-manager) - declaritive framework for nix package manager
 * [chezmoi](https://github.com/twpayne/chezmoi) - dotfiles manager
 * [zsh](https://www.zsh.org/) - my perfered shell
 * [zit](https://github.com/thiagokokada/zit) - minimal zsh module manager
 
-### Installed zsh modules
-* [powerline10k](https://github.com/romkatv/powerlevel10k) - zsh theme
-* [zsh-autocomplete](https://github.com/marlonrichert/zsh-autocomplete.git) - auto complete on steroids.
-* [git-it-on](https://github.com/peterhurford/git-it-on.zsh) - Commands to open github/gitlab from your working directory (when it is a git repo).
-* [fast-syntax-highlighting](https://github.com/zdharma/fast-syntax-highlighting) - Customizible syntax highlighting.
 
 ### Other installed tools
-* [neoFetch](https://github.com/dylanaraps/neofetch) - Shows system info with cool ascii art for your distro on login.
-* My [aliases](dot_aliases) - My personal aliases for zsh (should work in bash as well)
-* My [functions](dot_functions) - My personal functions for zsh. *.zsh gets loaded and compiled.
+* [neoFetch](https://github.com/dylanaraps/neofetch) - shows system info with cool ascii art for your distro on login.
+* My [aliases](dot_aliases) - my personal aliases for zsh (should work in bash as well)
+* My [functions](dot_functions) - my personal functions for zsh. *.zsh gets loaded and compiled.
+* [powerline10k](https://github.com/romkatv/powerlevel10k) - zsh theme
+
 
 ### Configurations managed
 * .zshrc
 * .p10k.zsh
 * .gitconfig
   * Creates a .HOSTNAME.gitignore file and imports it allowing you to put things that you dont want on github in your config (work git info).
-<!-- GETTING STARTED -->
+
 ## Getting Started
 
 To get a local machine up and running with these dotfiles follow these simple steps.
 
 ### Prerequisites
 
-The following things will be needed to use theses dotfiles.
-* curl - Used to download the [chezmoi](https://github.com/twpayne/chezmoi) installer.
-* zsh - My perfered shell
-* bash - Needed by [neoFetch](https://github.com/dylanaraps/neofetch).
+The following things will be needed to use theses dotfiles (any other tools will be installed with nix after installation).
+* curl - Used in the oneliner installer.
+* bash - Used in the oneliner installer.
+* xz - Used in the oneliner installer.
 * A installed [nerdfont](https://github.com/ryanoasis/nerd-fonts)
   * I use the patched Hack font but any of the patched fonts from that repo will work.
   * You will need to set it as the font for your terminal emulator.
@@ -88,33 +86,35 @@ The following things will be needed to use theses dotfiles.
 
 ### Installation
 
-This installs [chezmoi](https://github.com/twpayne/chezmoi), sets it up to use this repo for dotfiles and applies them to your user.
+This installs [chezmoi](https://github.com/twpayne/chezmoi), [nix](https://github.com/NixOS/nixpkgs) and [home-manager](https://github.com/nix-community/home-manager) and the dotfiles using this repo and applies them to your user.
 ```zsh
-sh -c "$(curl -fsLS git.io/chezmoi)" -- init --apply PartemImperium 
+bash <( curl https://raw.githubusercontent.com/PartemImperium/dotfiles/master/install.sh)
 ```
-
+Note: you can pass a branch into the oneliner installer with the --branch arg. For a normal install I would suggest using master and doing your feature work in a docker container however.
+```zsh
+bash <( curl https://raw.githubusercontent.com/PartemImperium/dotfiles/master/install.sh) --branch feature/my-super-awesome-feature
+```
 ## Test it Out
 If you want to try out before running it on your machine you can use one of the following docker containers to see what it will do. As soon as you exit out of the container it will stop and all changes will be reverted.
 
 You can use whichever base image you perfer (any base image will do but you will need to go through the process of adding a new user because nix cant be installed as root). You first need to build the image then run it. The below commands will build and then start the docker container in a interactive colorized terminal (and auto installs/updates the needed tools) that self destructs when you exit the container.
 
+If you are making changes to the install.sh or build_and_run.sh then you need to replace master with your feature branch in the curl url.
+
+--branch defaults to master and --distro defaults to ubuntu as such if you want master and ubuntu it is not needed to pass either.
 ### Alpine
 ```zsh
-docker build -t dotfiles-alpine  https://github.com/PartemImperium/dotfiles.git#feature/add-nix-and-docker-support -f dockerfiles/alpine/Dockerfile
-docker run -e TERM -e COLORTERM -it --rm dotfiles-alpine
+bash <( curl https://raw.githubusercontent.com/PartemImperium/dotfiles/master/dockerfiles/build_and_run.sh) --branch feature/my-super-cool-feature --distro alpine
 ```
 
 ### Ubuntu
 ```zsh
-docker build -t dotfiles-ubuntu  https://github.com/PartemImperium/dotfiles.git#feature/add-nix-and-docker-support -f dockerfiles/ubuntu/Dockerfile
-docker run -e TERM -e COLORTERM -it --rm dotfiles-ubuntu
+bash <( curl https://raw.githubusercontent.com/PartemImperium/dotfiles/master/dockerfiles/build_and_run.sh) --branch feature/my-super-cool-feature --distro ubuntu
 ```
 
 ## Making Changes
-To make changes I make the changes in a new branch and then run them in a docker container as explained in [Test it Out](#test-it-out) with a slight modification to the instalation command that checks out a specifc branch instead of the default master branch.
-```zsh
-sh -c "$(curl -fsLS git.io/chezmoi)" -- init --apply PartemImperium --branch feature/my-super-awesome-addition
-```
+To make changes I make the changes in a new branch and then run them in a docker container as explained in [Test it Out](#test-it-out). If you dont want to curl the build_and_run.sh script you can just run the version locally and it wil work.
+
 Once I verify everything works in the docker container merge the branch into master and update on machinces.
 ```zsh
 chezmoi update
