@@ -1,29 +1,35 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 # Make the config mode directory if it doesnt exist
 mkdir -p ~/.config/roles/chosen;
 
-# Initialize array
-options=();
+# Initialize dialog options
+local -U dialogOptions;
+
+# Initialize file name to index to be used to manage the chosen roles.
+local -U files;
 
 # Initialize index (I dont think there is a for loop with iterator)
-i=0;
+i=1;
 for f in ~/.config/roles/options/*; do
+    # Add the file name and index for later
+    files[$i]=$f;
+
     # Add the index to show in dialog
-    options+=($i);
+    dialogOptions+=$i;
     
     # The file contents contains the Verbage to show for the role in dialog (add it)
     contents="$(<$f)";
-    options+=("$contents");
+    dialogOptions+=("$contents");
 
     # Do string replacement for options to choosen (getting the path to check if the file has been choosen)
     chosenFile="${f//options/chosen}";
     
     # Check if the role is already activated and start it that way in dialog
     if [[ -f "$chosenFile" ]]; then
-        options+=("on");
+        dialogOptions+=("on");
     else
-        options+=("off");
+        dialogOptions+=("off");
     fi
 
     # Incriment the index
@@ -40,9 +46,9 @@ function dialog_menu()
 
     for i in $arr; do
        (( j = (i * 3) + 1 ));
-       echo ${array[$j]};
+       echo ${arr[$j]};
+       echo ${files[$i]};
     done
-echo
 }
 
-dialog_menu array[@];
+dialog_menu $dialogOptions[@];
