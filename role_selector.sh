@@ -4,10 +4,10 @@
 mkdir -p ~/.config/roles/chosen;
 
 # Initialize dialog options
-local -U dialogOptions;
+local -a dialogOptions;
 
 # Initialize file name to index to be used to manage the chosen roles.
-local -U files;
+local -a files;
 
 # Initialize index (I dont think there is a for loop with iterator)
 i=1;
@@ -26,29 +26,25 @@ for f in ~/.config/roles/options/*; do
     chosenFile="${f//options/chosen}";
     
     # Check if the role is already activated and start it that way in dialog
+    currentStatus="off";
     if [[ -f "$chosenFile" ]]; then
-        dialogOptions+=("on");
-    else
-        dialogOptions+=("off");
+        currentStatus="on";
     fi
+
+    dialogOptions+=("$currentStatus");
 
     # Incriment the index
     i=$(( i + 1 ));
 done
 
-function dialog_menu()
-{
-    width=50;
-    height=15;
-    list_height=10;
+width=50;
+height=15;
+list_height=10;
 
-    arr="$(dialog --clear --backtitle "Menu Test" --title "This is a test for Menu entry" --checklist "Menu" $height $width $list_height "${!1}" --output-fd 1)";
+arr="$(dialog --clear --backtitle "Menu Test" --title "This is a test for Menu entry" --checklist "Menu" $height $width $list_height ${dialogOptions} --output-fd 1)";
 
-    for i in $arr; do
-       (( j = (i * 3) + 1 ));
-       echo ${arr[$j]};
-       echo ${files[$i]};
-    done
-}
-
-dialog_menu $dialogOptions[@];
+for i in $arr; do
+    (( j = (i * 3) + 1 ));
+    echo ${arr[$j]};
+    echo ${files[$i]};
+done
