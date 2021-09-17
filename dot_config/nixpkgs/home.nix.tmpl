@@ -6,7 +6,6 @@
 
     #Package Lists.
     #Each list can be added to the home.packages array wth a ++. 
-    #I havent yet decided the mechanism for handling what lists to add (it will likly be Chezmoi in some way)
 
     videoUtils = with pkgs; [
         makemkv      # bluray ripping tool # I still need to get config all set up for this one
@@ -65,6 +64,10 @@
         glow                                                                   # cli markdown renderer
         (nerdfonts.override { fonts = ["Hack"]; enableWindowsFonts = true; })  # Hack font with several font icon sets patched
     ] 
-      #++ videoUtils
+      {{ if eq (env "CHEZMOI_ROLE_VIDEO_UTILS") "true" }} ++ videoUtils {{ end }}
+      {{ if eq (env "CHEZMOI_ROLE_AUDIO_UTILS") "true" }} ++ audioUtils {{ end }}
+      {{ if eq (env "CHEZMOI_ROLE_AUDIO_APPS") "true" }} ++ audioApps {{ end }}
+      {{ if eq (env "CHEZMOI_ROLE_APPS") "true" }} ++ apps {{ end }}
+      {{ if eq (env "CHEZMOI_ROLE_IMAGE_APPS") "true" }} ++ imageApps {{ end }}
       ;
 }
