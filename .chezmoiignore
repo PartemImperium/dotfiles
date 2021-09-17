@@ -13,3 +13,5 @@ dockerfiles
 
 readme.md
 install.sh
+
+.vscode
