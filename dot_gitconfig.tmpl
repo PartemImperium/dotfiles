@@ -1,7 +1,8 @@
 [push]
 default = current
 
-
+{{ if eq (env "CHEZMOI_ROLE_WORK") "true" }}
 #Include any machine specific git configuration. This can be used for work config that I dont want checked into GitHub
 [include]
-path = ~/.{{ .chezmoi.hostname }}.gitconfig
+path = ~/.work.gitconfig
+{{ end }}
