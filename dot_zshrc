@@ -20,6 +20,12 @@ zit-install-load "https://github.com/romkatv/powerlevel10k.git" "powerline10k" "
 zit-install "https://github.com/dylanaraps/neofetch" "neofetch";
 ~/.zsh-modules/neofetch/neofetch;
 
+#If chosen roles have not been set up yet run the selector and then add the environment vars for roles.
+if [ ! -f ~/.config/roles/chosen/* ]]; then
+  . ~/.config/roles/role_selector.zsh;
+fi
+source ~/.config/roles/role_environment_apply.zsh
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.

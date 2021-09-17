@@ -49,7 +49,7 @@ done
 out="$(dialog --clear --backtitle "Menu Test" --title "This is a test for Menu entry" --checklist "Menu" ${dialogOptions} --stdout)";
 clear;
 
-#Create a file in the chosen folder (so that the rm doesnt error if nothing exits) and then remove all existing choices (the new selections will be populated in a second).
+# Create a file in the chosen folder (so that the rm doesnt error if nothing exits) and then remove all existing choices (the new selections will be populated in a second).
 touch ~/.config/roles/chosen/REMOVE_ME;
 rm ~/.config/roles/chosen/*;
 
@@ -58,3 +58,6 @@ parts=(${(@s: :)out});#TODO: Pull this into a function so it can be reused.
 for i in ${parts[@]}; do
     touch $files[$i];
 done
+
+# Add a null role so that .zshrc knows that the role selection has been run (in the case of no roles selected)
+touch ~/.config/roles/chosen/CHEZMOI_ROLL_NULL
