@@ -62,7 +62,13 @@ case $nixInstallType in
 esac
 
 #We told nix to not add this to the profile so run it by hand before chezmoi is installed/configured
-. ~/.nix-profile/etc/profile.d/nix.sh;
+if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+  . "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh";
+fi
+
+if [ -e '$HOME/.nix-profile/etc/profile.d/nix.sh' ]; then
+  . "$HOME/.nix-profile/etc/profile.d/nix.sh";
+fi
 
 NIX_HOME_DIR="$HOME/.config/nixpkgs";
 NIX_HOME_FILE="$NIX_HOME_DIR/home.nix";
