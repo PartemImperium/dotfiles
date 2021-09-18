@@ -65,8 +65,9 @@ A single source for all my dotfiles to be applied to my machines. These will be 
 ### Configurations managed
 * .zshrc
 * .p10k.zsh
+* home.nix
 * .gitconfig
-  * Creates a .HOSTNAME.gitignore file and imports it allowing you to put things that you dont want on github in your config (work git info).
+  * Creates either a .home.gitconfig or .work.gitconfig file and imports it allowing you to seperate home or work config (and overal config).
 
 ## Getting Started
 
@@ -81,8 +82,8 @@ The following things will be needed to use theses dotfiles (any other tools will
 * A installed [nerdfont](https://github.com/ryanoasis/nerd-fonts)
   * I use the patched Hack font but any of the patched fonts from that repo will work.
   * You will need to set it as the font for your terminal emulator.
-  * Eventually I will manage the fonts with this repo but havent figured out how to get it to work with linux, macos and windows.
-  * If you dont install a patched nerd font things will function but there will be missing chars in the terminal theme making it look weird.
+  * Nix/Home Manager installs Hack NerdFont but currently that doesnt install to host in WSL.
+  * If you dont install (or set as the font in your terminal emulator) a patched nerd font things will function but there will be missing chars in the terminal theme making it look weird.
 
 ### Installation
 
