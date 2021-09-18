@@ -21,7 +21,7 @@ zit-install "https://github.com/dylanaraps/neofetch" "neofetch";
 ~/.zsh-modules/neofetch/neofetch;
 
 #If chosen roles have not been set up yet run the selector and then add the environment vars for roles.
-if [[ ! -f ~/.config/roles/chosen/* ]]; then
+if [[ ! -f ~/.config/roles/chosen/CHEZMOI_ROLL_NULL ]]; then
   . ~/.config/roles/role_selector.zsh;
 fi
 source ~/.config/roles/role_environment_apply.zsh

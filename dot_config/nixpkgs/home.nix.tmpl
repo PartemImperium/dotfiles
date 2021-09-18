@@ -52,6 +52,8 @@
     home.stateVersion = "21.05";
     
     fonts.fontconfig.enable = true;
+
+    nixpkgs.config.allowUnfree = true;
     
     home.packages = with pkgs; [
         zsh                                                                    # shell
