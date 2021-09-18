@@ -54,7 +54,7 @@
     fonts.fontconfig.enable = true;
 
     nixpkgs.config.allowUnfree = true;
-    
+
     home.packages = with pkgs; [
         zsh                                                                    # shell
         chezmoi                                                                # dotfiles manager
@@ -62,6 +62,7 @@
         git                                                                    # source control
         curl                                                                   # cli tool to download files
         nano                                                                   # cli text editor
+        micro                                                                  # cli text editor on steroids
         bat                                                                    # cat clone on steroids
         glow                                                                   # cli markdown renderer
         (nerdfonts.override { fonts = ["Hack"]; enableWindowsFonts = true; })  # Hack font with several font icon sets patched
