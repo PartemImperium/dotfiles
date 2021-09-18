@@ -95,9 +95,9 @@ echo "$NIX_HOME_BOOTSTRAP" > $NIX_HOME_FILE;
 nix-channel --add https://github.com/nix-community/home-manager/archive/release-21.05.tar.gz home-manager;
 nix-channel --update;
 
-nix-shell '<home-manager>' -A install;
-
 export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH;
+
+nix-shell '<home-manager>' -A install;
 
 #chezmoi is installed now but still not configured so we need to run this
 . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh";
