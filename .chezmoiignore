@@ -5,6 +5,13 @@
 #TODO: Do linux specific things here
 {{ end }}
 
+#Either exclude the home config or exclude the script to create the work config file.
+{{ if eq (env "CHEZMOI_ROLE_WORK") "true" }}
+dot_home.gitconfig
+{{ else }}
+run_once_create_work_gitconfig.zsh
+{{ end }}
+
 #Dont apply images to ~
 images
 
