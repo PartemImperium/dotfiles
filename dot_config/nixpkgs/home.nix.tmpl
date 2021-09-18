@@ -39,7 +39,11 @@
     # Home Manager needs a bit of information about you and the
     # paths it should manage.
     home.username = "{{ .chezmoi.username }}";
+    {{ if ne .chezmoi.os "darwin" }}
     home.homeDirectory = "/home/{{ .chezmoi.username }}";
+    {{ else }}
+    home.homeDirectory = "/Users/{{ .chezmoi.username }}";
+    {{ end }}
 
     # This value determines the Home Manager release that your
     # configuration is compatible with. This helps avoid breakage
