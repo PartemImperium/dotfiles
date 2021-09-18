@@ -77,8 +77,6 @@ NIX_HOME_BOOTSTRAP="{ config, pkgs, ... }:
 {
   programs.home-manager.enable = true;
 
-  # Fix I/O error when writing XML
-  xdg.mime.enable = false;
 
   # Basic packages to setup the rest
   home.packages = [
