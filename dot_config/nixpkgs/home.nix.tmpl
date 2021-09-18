@@ -6,7 +6,6 @@
 
     #Package Lists.
     #Each list can be added to the home.packages array wth a ++. 
-    #I havent yet decided the mechanism for handling what lists to add (it will likly be Chezmoi in some way)
 
     videoUtils = with pkgs; [
         makemkv      # bluray ripping tool # I still need to get config all set up for this one
@@ -53,17 +52,25 @@
     home.stateVersion = "21.05";
     
     fonts.fontconfig.enable = true;
-    
+
+    nixpkgs.config.allowUnfree = true;
+
     home.packages = with pkgs; [
         zsh                                                                    # shell
         chezmoi                                                                # dotfiles manager
+        dialog                                                                 # cli menu
         git                                                                    # source control
         curl                                                                   # cli tool to download files
         nano                                                                   # cli text editor
+        micro                                                                  # cli text editor on steroids
         bat                                                                    # cat clone on steroids
         glow                                                                   # cli markdown renderer
         (nerdfonts.override { fonts = ["Hack"]; enableWindowsFonts = true; })  # Hack font with several font icon sets patched
     ] 
-      #++ videoUtils
+      {{ if eq (env "CHEZMOI_ROLE_VIDEO_UTILS") "true" }} ++ videoUtils {{ end }}
+      {{ if eq (env "CHEZMOI_ROLE_AUDIO_UTILS") "true" }} ++ audioUtils {{ end }}
+      {{ if eq (env "CHEZMOI_ROLE_AUDIO_APPS") "true" }} ++ audioApps {{ end }}
+      {{ if eq (env "CHEZMOI_ROLE_APPS") "true" }} ++ apps {{ end }}
+      {{ if eq (env "CHEZMOI_ROLE_IMAGE_APPS") "true" }} ++ imageApps {{ end }}
       ;
 }

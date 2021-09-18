@@ -1,4 +1,4 @@
-#Allow sudo to use aliases http://www.shellperson.net/using-sudo-with-an-alias/
+# Allow sudo to use aliases http://www.shellperson.net/using-sudo-with-an-alias/
 alias sudo="sudo "
 
 # Easier navigation: .., ..., ...., ....., ~ and -
@@ -9,6 +9,7 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
-
-#Fix typo (and make funny new way to reboot)
+# Fix Typo's
+alias gity=git
+# This one makes a funny new way to reboot as well as fixing a typo
 alias rebooty=reboot

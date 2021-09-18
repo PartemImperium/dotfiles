@@ -5,6 +5,10 @@
 #TODO: Do linux specific things here
 {{ end }}
 
+{{ if eq (env "CHEZMOI_ROLE_WORK") "true" }}
+dot_home.gitconfig
+{{ end }}
+
 #Dont apply images to ~
 images
 
@@ -13,3 +17,5 @@ dockerfiles
 
 readme.md
 install.sh
+
+.vscode

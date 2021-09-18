@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+
+#Create machine specific git config file. This file is not mananged by chezmoi.
+{{ if eq (env "CHEZMOI_ROLE_WORK") "true" }}
+touch ".work.gitconfig";
+{{ end }}
