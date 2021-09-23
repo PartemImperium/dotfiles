@@ -43,12 +43,15 @@
         # Put common imports here.
         
      ] ++ lib.lists.optionals vars.isDarwin [
-         #Put Darwin imports here.
+         # Put Darwin imports here.
          ./darwin/applications-dest/applications-dest.nix 
+     ] ++ lib.lists.optionals vars.isLinux [
+         # Put Linux imports here.
+         .linux/xdg-mime-enable/xdg-mime-enable.nix
+     ] ++ lib.lists.optionals vars.isWsl [
+         # Put WSL imports here.
+         
      ];
-
-    # Fix I/O error with XML write (but not on darwin) - root cause unknown 
-    xdg.mime.enable = !vars.isDarwin;
 
     # Home Manager needs a bit of information about you and the
     # paths it should manage.
