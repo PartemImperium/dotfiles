@@ -8,7 +8,7 @@
 			"dot_aliases": "shellscript",
 			"dot_zshrc": "shellscript",
 			".chezmoiignore": "ignore",
-			"home.nix.tmpl":"nix"
+			"*.nix.tmpl":"nix"
 		}
 	}
 }

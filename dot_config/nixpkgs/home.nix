@@ -3,6 +3,7 @@
     let
     unstable = import <nixpkgs-unstable> { config = pkgs.config; };
     nixgl = import <nixgl> { pkgs = unstable; };
+    vars = import ./variables.nix;
 
     #Package Lists.
     #Each list can be added to the home.packages array wth a ++. 
@@ -18,7 +19,7 @@
         flac # cli tool to encode audio files as flac
     ];
 
-    audioApps = with pkgs;[
+    audioApps = with pkgs; [
 #        picard # audio tagging program
     ];
 
@@ -27,10 +28,11 @@
 #        vlc    # audio and video player 
     ];
 
-    imageApps = with pkgs;[
+    imageApps = with pkgs; [
         gimp     # free image editing utility much like photoshop
         inkscape # free vector graphics editor
     ];
+
     in
 
     {
@@ -39,17 +41,19 @@
 
     imports = [ 
         # Put common imports here.
-     
-        {{ if eq "darwin" .chezmoi.os }}
-        #Put Darwin imports here.
+        
+     ] ++ lib.lists.optionals vars.isDarwin [
+         #Put Darwin imports here.
          ./darwin/applications-dest/applications-dest.nix 
-        {{ end }}
      ];
+
+    # Fix I/O error with XML write (but not on darwin) - root cause unknown 
+    xdg.mime.enable = !vars.isDarwin;
 
     # Home Manager needs a bit of information about you and the
     # paths it should manage.
-    home.username = "{{ .chezmoi.username }}";
-    home.homeDirectory = "{{ .chezmoi.homeDir }}";
+    home.username = vars.username;
+    home.homeDirectory = vars.homeDirectory;
 
     # This value determines the Home Manager release that your
     # configuration is compatible with. This helps avoid breakage
@@ -66,22 +70,20 @@
     nixpkgs.config.allowUnfree = true;
 
     home.packages = with pkgs; [
-        zsh                                                                    # shell
-        chezmoi                                                                # dotfiles manager
-        dialog                                                                 # cli menu
-        git                                                                    # source control
-        curl                                                                   # cli tool to download files
-        nano                                                                   # cli text editor
-        micro                                                                  # cli text editor on steroids
-        bat                                                                    # cat clone on steroids
-        glow                                                                   # cli markdown renderer
-        (nerdfonts.override { fonts = ["Hack"]; enableWindowsFonts = true; })  # Hack font with several font icon sets patched
-    ] 
-      {{ if eq (env "CHEZMOI_ROLE_VIDEO_UTILS") "true" }} ++ videoUtils {{ end }}
-      {{ if eq (env "CHEZMOI_ROLE_AUDIO_UTILS") "true" }} ++ audioUtils {{ end }}
-      {{ if eq (env "CHEZMOI_ROLE_AUDIO_APPS") "true" }} ++ audioApps {{ end }}
-      {{ if eq (env "CHEZMOI_ROLE_APPS") "true" }} ++ apps {{ end }}
-      {{ if eq (env "CHEZMOI_ROLE_IMAGE_APPS") "true" }} ++ imageApps {{ end }}
-      ;
+        zsh                                                                          # shell
+        chezmoi                                                                      # dotfiles manager
+        dialog                                                                       # cli menu
+        git                                                                          # source control
+        curl                                                                         # cli tool to download files
+        nano                                                                         # cli text editor
+        micro                                                                        # cli text editor on steroids
+        bat                                                                          # cat clone on steroids
+        glow                                                                         # cli markdown renderer
+        (nerdfonts.override { fonts = ["Hack"]; enableWindowsFonts = vars.isWsl; })  # Hack font with several font icon sets patched
+    ] ++ lib.lists.optionals vars.shouldInstallVideoUtils videoUtils 
+      ++ lib.lists.optionals vars.shouldInstallAudioUtils audioUtils 
+      ++ lib.lists.optionals vars.shouldInstallAudioApps audioApps 
+      ++ lib.lists.optionals vars.shouldInstallAppss apps
+      ++ lib.lists.optionals vars.shouldInstallImageApps imageApps;
 
 }

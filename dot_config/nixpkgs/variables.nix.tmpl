@@ -1,0 +1,17 @@
+{
+    # Install Roles
+    shouldInstallVideoUtils = {{ if eq (env "CHEZMOI_ROLE_VIDEO_UTILS") "true" }}true{{ else }}false{{ end }};
+    shouldInstallAudioUtils = {{ if eq (env "CHEZMOI_ROLE_AUDIO_UTILS") "true" }}true{{ else }}false{{ end }};
+    shouldInstallAudioApps = {{ if eq (env "CHEZMOI_ROLE_AUDIO_APPS") "true" }}true{{ else }}false{{ end }};
+    shouldInstallAppss = {{ if eq (env "CHEZMOI_ROLE_APPS") "true" }}true{{ else }}false{{ end }};
+    shouldInstallImageApps = {{ if eq (env "CHEZMOI_ROLE_IMAGE_APPS") "true" }}true{{ else }}false{{ end }};
+
+    # System Info
+    isDarwin = {{ if eq "darwin" .chezmoi.os }}true{{ else }}false{{ end }};
+    isWsl = {{ if and (eq .chezmoi.os "linux") (.chezmoi.kernel) }}{{ if ( .chezmoi.kernel.osrelease | lower | contains "microsoft") }}true{{ end }}{{ else }}false{{ end }};
+    isLinux = {{ if (eq .chezmoi.os "linux") }}true{{ else }}false{{ end }};
+
+    # User Info
+    username = "{{ .chezmoi.username }}";
+    homeDirectory = "{{ .chezmoi.homeDir }}";
+}
