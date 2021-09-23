@@ -1,4 +1,4 @@
-    { pkgs, ... }:
+    { config, lib, pkgs, ... }:
 
     let
     unstable = import <nixpkgs-unstable> { config = pkgs.config; };
@@ -19,16 +19,17 @@
     ];
 
     audioApps = with pkgs;[
-        picard # audio tagging program
+#        picard # audio tagging program
     ];
 
     apps = with pkgs; [
         vscode # text editor on steroids # Add a overlay that adds any vsc extension I would want https://nixos.wiki/wiki/Vscode
-        vlc    # audio and video player 
+#        vlc    # audio and video player 
     ];
 
     imageApps = with pkgs;[
-        gimp # free image editing utility much like photoshop
+        gimp     # free image editing utility much like photoshop
+        inkscape # free vector graphics editor
     ];
     in
 
@@ -36,14 +37,19 @@
     # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;
 
+    imports = [ 
+        # Put common imports here.
+     
+        {{ if eq "darwin" .chezmoi.os }}
+        #Put Darwin imports here.
+         ./darwin/applications-dest/applications-dest.nix 
+        {{ end }}
+     ];
+
     # Home Manager needs a bit of information about you and the
     # paths it should manage.
     home.username = "{{ .chezmoi.username }}";
-    {{ if ne .chezmoi.os "darwin" }}
-    home.homeDirectory = "/home/{{ .chezmoi.username }}";
-    {{ else }}
-    home.homeDirectory = "/Users/{{ .chezmoi.username }}";
-    {{ end }}
+    home.homeDirectory = "{{ .chezmoi.homeDir }}";
 
     # This value determines the Home Manager release that your
     # configuration is compatible with. This helps avoid breakage
@@ -77,4 +83,5 @@
       {{ if eq (env "CHEZMOI_ROLE_APPS") "true" }} ++ apps {{ end }}
       {{ if eq (env "CHEZMOI_ROLE_IMAGE_APPS") "true" }} ++ imageApps {{ end }}
       ;
+
 }

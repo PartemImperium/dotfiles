@@ -142,6 +142,7 @@ In the default terminal when only 8 colors exist (and icon fonts wont work) the 
 * [Good starter readme](https://github.com/othneildrew/Best-README-Template)
 * [Helpful guide to get Nix working in docker](https://aaronlevin.ca/post/100703631408/installing-nix-within-a-docker-container)
 * [Install script used as a base for installing Nix and chezmoi in a one liner](https://github.com/tapayne88/dotfiles/blob/master/public/install.sh)
+* [Install nix darwin Applications into ~/Applications/Home Manager/](https://github.com/nuance/dotfiles/blob/master/home-manager/environments/macos.nix#L98-L117)
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
