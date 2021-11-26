@@ -5,7 +5,6 @@ NORMAL_ZIT_MODULES_PATH="${HOME}/.zsh-modules";
 export ZIT_MODULES_PATH=$NORMAL_ZIT_MODULES_PATH;
 
 
-export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH;
 
 if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
   source "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh";
@@ -14,6 +13,8 @@ fi
 if [ -e '$HOME/.nix-profile/etc/profile.d/nix.sh' ]; then
   source "$HOME/.nix-profile/etc/profile.d/nix.sh";
 fi
+export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH;
+
 source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh";
 
 # If Zit is not found, clone it

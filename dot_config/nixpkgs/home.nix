@@ -4,6 +4,7 @@
     unstable = import <nixpkgs-unstable> { config = pkgs.config; };
     nixgl = import <nixgl> { pkgs = unstable; };
     vars = import ./variables.nix;
+    fileHelpers = import ./fileHelpers.nix { lib = lib; };
 
     #Package Lists.
     #Each list can be added to the home.packages array wth a ++. 
@@ -42,16 +43,9 @@
     imports = [ 
         # Put common imports here.
         
-     ] ++ lib.lists.optionals vars.isDarwin [
-         # Put Darwin imports here.
-         ./darwin/applications-dest/applications-dest.nix 
-     ] ++ lib.lists.optionals vars.isLinux [
-         # Put Linux imports here.
-         .linux/xdg-mime-enable/xdg-mime-enable.nix
-     ] ++ lib.lists.optionals vars.isWsl [
-         # Put WSL imports here.
-         
-     ];
+     ] ++ lib.lists.optionals vars.isDarwin ([] ++ fileHelpers.validNixFiles ./darwin)
+       ++ lib.lists.optionals vars.isLinux ([] ++ fileHelpers.validNixFiles ./linux)
+       ++ lib.lists.optionals vars.isWsl ([] ++ fileHelpers.validNixFiles ./wsl);
 
     # Home Manager needs a bit of information about you and the
     # paths it should manage.
@@ -88,5 +82,4 @@
       ++ lib.lists.optionals vars.shouldInstallAudioApps audioApps 
       ++ lib.lists.optionals vars.shouldInstallAppss apps
       ++ lib.lists.optionals vars.shouldInstallImageApps imageApps;
-
 }
