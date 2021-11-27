@@ -81,7 +81,7 @@
         bat                                                                          # cat clone on steroids
         glow                                                                         # cli markdown renderer
         (nerdfonts.override { fonts = ["Hack"]; enableWindowsFonts = vars.isWsl; })  # Hack font with several font icon sets patched
-        #manix                                                                       # man tool for nix options (across nix, home-manager, ect)
+        manix                                                                        # man tool for nix options (across nix, home-manager, ect)
     ] ++ lib.lists.optionals vars.shouldInstallVideoUtils videoUtils 
       ++ lib.lists.optionals vars.shouldInstallAudioUtils audioUtils 
       ++ lib.lists.optionals vars.shouldInstallAudioApps audioApps 
