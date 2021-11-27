@@ -6,6 +6,8 @@
     shouldInstallAppss = {{ if eq (env "CHEZMOI_ROLE_APPS") "true" }}true{{ else }}false{{ end }};
     shouldInstallImageApps = {{ if eq (env "CHEZMOI_ROLE_IMAGE_APPS") "true" }}true{{ else }}false{{ end }};
 
+    isWork = {{ if eq (env "CHEZMOI_ROLE_WORK") "true" }}true{{ else }}false{{ end }};
+    
     # System Info
     isDarwin = {{ if eq "darwin" .chezmoi.os }}true{{ else }}false{{ end }};
     isWsl = {{ if and (eq .chezmoi.os "linux") (.chezmoi.kernel) }}{{ if ( .chezmoi.kernel.osrelease | lower | contains "microsoft") }}true{{ end }}{{ else }}false{{ end }};

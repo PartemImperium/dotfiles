@@ -45,7 +45,11 @@
         
      ] ++ lib.lists.optionals vars.isDarwin ([] ++ fileHelpers.validNixFiles ./darwin)
        ++ lib.lists.optionals vars.isLinux ([] ++ fileHelpers.validNixFiles ./linux)
-       ++ lib.lists.optionals vars.isWsl ([] ++ fileHelpers.validNixFiles ./wsl);
+       ++ lib.lists.optionals vars.isWsl ([] ++ fileHelpers.validNixFiles ./wsl)
+       ++ ([] ++ fileHelpers.validNixFiles ./pkgsConfig)
+       # The work modules are not tracked in git. They are added manually on my work computer for anything that is work specific (and I dont want in source control). 
+       # They are also added after everything else so that they can override settings set in other configs.
+       ++ lib.lists.optionals vars.isWork ([] ++ fileHelpers.validNixFiles ./work); 
 
     # Home Manager needs a bit of information about you and the
     # paths it should manage.
@@ -77,6 +81,7 @@
         bat                                                                          # cat clone on steroids
         glow                                                                         # cli markdown renderer
         (nerdfonts.override { fonts = ["Hack"]; enableWindowsFonts = vars.isWsl; })  # Hack font with several font icon sets patched
+        #manix                                                                       # man tool for nix options (across nix, home-manager, ect)
     ] ++ lib.lists.optionals vars.shouldInstallVideoUtils videoUtils 
       ++ lib.lists.optionals vars.shouldInstallAudioUtils audioUtils 
       ++ lib.lists.optionals vars.shouldInstallAudioApps audioApps 
