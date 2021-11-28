@@ -72,6 +72,7 @@
 
     home.packages = with pkgs; [
         zsh                                                                          # shell
+        neofetch                                                                     # cli tool for displaying system info
         chezmoi                                                                      # dotfiles manager
         dialog                                                                       # cli menu
         git                                                                          # source control

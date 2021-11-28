@@ -27,8 +27,7 @@ source "${ZIT_MODULES_PATH}/zit/zit.zsh";
 
 zit-install-load "https://github.com/romkatv/powerlevel10k.git" "powerline10k" "powerlevel10k.zsh-theme";
 
-zit-install "https://github.com/dylanaraps/neofetch" "neofetch";
-~/.zsh-modules/neofetch/neofetch;
+neofetch;
 
 #If chosen roles have not been set up yet run the selector and then add the environment vars for roles.
 if [[ ! -f ~/.config/roles/chosen/CHEZMOI_ROLL_NULL ]]; then
