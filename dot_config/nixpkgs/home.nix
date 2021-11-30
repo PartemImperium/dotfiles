@@ -72,6 +72,8 @@
 
     home.packages = with pkgs; [
         zsh                                                                          # shell
+        nix-index                                                                    # index of files in installed through nix as well as a command not found/ suggestted install 
+        nix-prefetch-git                                                             # helper to get sha has of git repos used for using repos in a nix module
         neofetch                                                                     # cli tool for displaying system info
         chezmoi                                                                      # dotfiles manager
         dialog                                                                       # cli menu
