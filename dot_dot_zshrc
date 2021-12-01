@@ -33,7 +33,7 @@ neofetch;
 if [[ ! -f ~/.config/roles/chosen/CHEZMOI_ROLL_NULL ]]; then
   . ~/.config/roles/role_selector.zsh;
 fi
-source ~/.config/roles/role_environment_apply.zsh
+source ~/.config/roles/role_environment_apply.zsh # I am not moving this into home-manager controlled dotfiles. Remove this once I am fully converted over to having nix control the roles
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]

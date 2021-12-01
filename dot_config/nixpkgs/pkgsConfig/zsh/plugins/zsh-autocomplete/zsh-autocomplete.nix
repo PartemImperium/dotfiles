@@ -1,10 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
     programs.zsh = {
         plugins = [
             {
                 name = "zsh-autocomplete";
-                file = "git-it-on.plugin.zsh";
+                file = "zsh-autocomplete.plugin.zsh";
                 src = pkgs.fetchFromGitHub { 
                         owner = "marlonrichert"; 
                         repo = "zsh-autocomplete"; 
@@ -13,6 +13,6 @@
                 };
             }
         ];
-        initExtra = ''bindkey "''${key[Up]}" up-line-or-search'';
+        initExtra = lib.fileContents ./nix-keybind.patch.zsh;
     };
 }

@@ -38,4 +38,11 @@ in
       )
       (files dir)
     );
+
+    combileFiles = files: with lib;
+      if builtins.isList files then
+        builtins.concatStringsSep "" (map (f: lib.fileContents f) files)
+      else
+        "";
+      
 }

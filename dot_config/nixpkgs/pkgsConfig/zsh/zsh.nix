@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 {
     programs.zsh = {
         enable = true;
@@ -35,8 +35,6 @@
                         inherit (config.programs.zsh) dotDir;
                    in "${homeDirectory}/${dotDir}/.zsh_history";
         };
-
-        initExtra = "neofetch";#TODO: Move this to a neofetch module and use the pkg var to get the full path of the executable
         #TODO: look into adding compiling to the plugins 
     };
 }
