@@ -10,7 +10,7 @@
     
     # System Info
     isDarwin = {{ if eq "darwin" .chezmoi.os }}true{{ else }}false{{ end }};
-    isWsl = {{ if and (eq .chezmoi.os "linux") (.chezmoi.kernel) }}{{ if ( .chezmoi.kernel.osrelease | lower | contains "microsoft") }}true{{ else }}false{{ end }}{{ end }};
+    isWsl = {{ if and (eq .chezmoi.os "linux") (.chezmoi.kernel) }}{{ if ( .chezmoi.kernel.osrelease | lower | contains "microsoft") }}true{{ else }}false{{ end }}{{ else }}false{{ end }};
     isLinux = {{ if (eq .chezmoi.os "linux") }}true{{ else }}false{{ end }};
 
     # User Info
