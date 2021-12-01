@@ -4,11 +4,16 @@ let
 in
 {
     programs.zsh = {
-        plugins = map (function:#TODO: make this actually work without hard coding...
+        plugins = map (function:
+        let 
+            fileName = builtins.baseNameOf function;
+            dir = builtins.dirOf function;
+            functionName = builtins.replaceStrings [".zsh"] [""] fileName;
+        in
         {
-            name = "function-folderize";
-            file = "folderize.zsh";
-            src = ./folderize;
+            name = ("function-" + functionName);
+            file = fileName;
+            src = dir;
         })
         (fileHelpers.validZshFiles ./.);
     };
