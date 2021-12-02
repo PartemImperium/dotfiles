@@ -71,7 +71,6 @@
     nixpkgs.config.allowUnfree = true;
 
     home.packages = with pkgs; [
-        zsh                                                                          # shell
         nix-prefetch-git                                                             # helper to get sha has of git repos used for using repos in a nix module
         neofetch                                                                     # cli tool for displaying system info
         chezmoi                                                                      # dotfiles manager

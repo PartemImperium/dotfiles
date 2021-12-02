@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 {
     programs.zsh = {
         enable = true;
@@ -36,5 +36,6 @@
                    in "${homeDirectory}/${dotDir}/.zsh_history";
         };
         #TODO: look into adding compiling to the plugins 
+        home.programs = [ pkgs.zsh ];
     };
 }
