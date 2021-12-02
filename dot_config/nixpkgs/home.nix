@@ -71,17 +71,14 @@
     nixpkgs.config.allowUnfree = true;
 
     home.packages = with pkgs; [
-        nix-prefetch-git                                                             # helper to get sha has of git repos used for using repos in a nix module
         neofetch                                                                     # cli tool for displaying system info
         chezmoi                                                                      # dotfiles manager
         dialog                                                                       # cli menu
-        git                                                                          # source control
         curl                                                                         # cli tool to download files
         nano                                                                         # cli text editor
         micro                                                                        # cli text editor on steroids
         glow                                                                         # cli markdown renderer
         (nerdfonts.override { fonts = ["Hack"]; enableWindowsFonts = vars.isWsl; })  # Hack font with several font icon sets patched
-        manix                                                                        # man tool for nix options (across nix, home-manager, ect)
     ] ++ lib.lists.optionals vars.shouldInstallVideo videoUtils 
       ++ lib.lists.optionals vars.shouldInstallAudio audioUtils 
       ++ lib.lists.optionals (vars.shouldInstallAudio && vars.isGui) audioApps 
