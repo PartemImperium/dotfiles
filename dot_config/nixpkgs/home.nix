@@ -72,7 +72,6 @@
 
     home.packages = with pkgs; [
         zsh                                                                          # shell
-        nix-index                                                                    # index of files in installed through nix as well as a command not found/ suggestted install 
         nix-prefetch-git                                                             # helper to get sha has of git repos used for using repos in a nix module
         neofetch                                                                     # cli tool for displaying system info
         chezmoi                                                                      # dotfiles manager
@@ -81,13 +80,12 @@
         curl                                                                         # cli tool to download files
         nano                                                                         # cli text editor
         micro                                                                        # cli text editor on steroids
-        bat                                                                          # cat clone on steroids
         glow                                                                         # cli markdown renderer
         (nerdfonts.override { fonts = ["Hack"]; enableWindowsFonts = vars.isWsl; })  # Hack font with several font icon sets patched
         manix                                                                        # man tool for nix options (across nix, home-manager, ect)
-    ] ++ lib.lists.optionals vars.shouldInstallVideoUtils videoUtils 
-      ++ lib.lists.optionals vars.shouldInstallAudioUtils audioUtils 
-      ++ lib.lists.optionals vars.shouldInstallAudioApps audioApps 
-      ++ lib.lists.optionals vars.shouldInstallAppss apps
-      ++ lib.lists.optionals vars.shouldInstallImageApps imageApps;
+    ] ++ lib.lists.optionals vars.shouldInstallVideo videoUtils 
+      ++ lib.lists.optionals vars.shouldInstallAudio audioUtils 
+      ++ lib.lists.optionals (vars.shouldInstallAudio && vars.isGui) audioApps 
+      ++ lib.lists.optionals vars.shouldInstallApps apps
+      ++ lib.lists.optionals (vars.shouldInstallImage && vars.isGui) imageApps;
 }
