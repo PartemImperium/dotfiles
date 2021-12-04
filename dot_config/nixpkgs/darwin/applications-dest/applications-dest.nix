@@ -7,7 +7,7 @@
         paths = config.home.packages;
         pathsToLink = "/Applications";
     };
-    in
+    in #TODO: Figure out a way to automattically create the icon as if it changes (through OS update or user changing the default) it has to be done manually currently.
     lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     baseDir="$HOME/Applications/Home Manager"
     if [ -d "$baseDir" ]; then
