@@ -25,8 +25,7 @@
     ];
 
     apps = with pkgs; [
-        vscode # text editor on steroids # Add a overlay that adds any vsc extension I would want https://nixos.wiki/wiki/Vscode
-#        vlc    # audio and video player 
+        # vlc    # audio and video player 
     ];
 
     imageApps = with pkgs; [
