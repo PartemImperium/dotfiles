@@ -10,10 +10,8 @@
     #Each list can be added to the home.packages array wth a ++. 
 
     videoUtils = with pkgs; [
-        #makemkv      # bluray ripping tool # I still need to get config all set up for this one
-        ffmpeg       # video encoder
+        #makemkv      # bluray ripping tool # I still need to get config all set up for this one    
         #handbrake    # video encoder
-        youtube-dl   # cli tool to download videos from youtube and other online sites
     ];
 
     audioApps = with pkgs; [
