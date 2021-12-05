@@ -16,7 +16,7 @@ let
   files = dir: with lib; collect isString (mapAttrsRecursive (path: type: concatStringsSep "/" path) (getDir dir));
 
 in 
-{#TODO: Firure out how a lambda param to a function would work to de-dupe these functions... Figure out how to handle enpty lists (and return a empty list not null)
+{#TODO: Firure out how a lambda param to a function would work to de-dupe these functions...
     # Filters out directories that don't end with .nix or are this file, also makes the strings absolute
     validNixFiles = dir: with lib; map
     (file: dir + "/${file}")
