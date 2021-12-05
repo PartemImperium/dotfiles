@@ -64,9 +64,7 @@
     nixpkgs.config.allowUnfree = true;
 
     home.packages = with pkgs; [
-        neofetch # cli tool for displaying system info
-        chezmoi  # dotfiles manager
-        curl     # cli tool to download files     
+        neofetch # cli tool for displaying system info  
     ] ++ lib.lists.optionals vars.shouldInstallVideo videoUtils 
       ++ lib.lists.optionals (vars.shouldInstallAudio && vars.isGui) audioApps 
       ++ lib.lists.optionals vars.shouldInstallApps apps
