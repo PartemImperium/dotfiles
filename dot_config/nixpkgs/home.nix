@@ -63,9 +63,8 @@
 
     nixpkgs.config.allowUnfree = true;
 
-    home.packages = with pkgs; [
-        neofetch # cli tool for displaying system info  
-    ] ++ lib.lists.optionals vars.shouldInstallVideo videoUtils 
+    home.packages = 
+         lib.lists.optionals vars.shouldInstallVideo videoUtils 
       ++ lib.lists.optionals (vars.shouldInstallAudio && vars.isGui) audioApps 
       ++ lib.lists.optionals vars.shouldInstallApps apps
       ++ lib.lists.optionals (vars.shouldInstallImage && vars.isGui) imageApps;
