@@ -71,7 +71,6 @@
         nano                                                                         # cli text editor
         micro                                                                        # cli text editor on steroids
         glow                                                                         # cli markdown renderer
-        (nerdfonts.override { fonts = ["Hack"]; enableWindowsFonts = vars.isWsl; })  # Hack font with several font icon sets patched
     ] ++ lib.lists.optionals vars.shouldInstallVideo videoUtils 
       ++ lib.lists.optionals (vars.shouldInstallAudio && vars.isGui) audioApps 
       ++ lib.lists.optionals vars.shouldInstallApps apps
