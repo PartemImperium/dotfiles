@@ -6,4 +6,3 @@ in
 {# cli tool to download videos from youtube and other online sites
     home.packages = lib.lists.optionals isEnabled [ pkgs.youtube-dl ];
 }
-    
