@@ -66,9 +66,7 @@
     home.packages = with pkgs; [
         neofetch # cli tool for displaying system info
         chezmoi  # dotfiles manager
-        dialog   # cli menu
-        curl     # cli tool to download files
-        nano     # cli text editor
+        curl     # cli tool to download files     
     ] ++ lib.lists.optionals vars.shouldInstallVideo videoUtils 
       ++ lib.lists.optionals (vars.shouldInstallAudio && vars.isGui) audioApps 
       ++ lib.lists.optionals vars.shouldInstallApps apps
