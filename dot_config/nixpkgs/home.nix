@@ -10,14 +10,10 @@
     #Each list can be added to the home.packages array wth a ++. 
 
     videoUtils = with pkgs; [
-        makemkv      # bluray ripping tool # I still need to get config all set up for this one
+        #makemkv      # bluray ripping tool # I still need to get config all set up for this one
         ffmpeg       # video encoder
-        handbrake    # video encoder
+        #handbrake    # video encoder
         youtube-dl   # cli tool to download videos from youtube and other online sites
-    ];
-
-    audioUtils = with pkgs; [
-        flac # cli tool to encode audio files as flac
     ];
 
     audioApps = with pkgs; [
@@ -29,8 +25,8 @@
     ];
 
     imageApps = with pkgs; [
-        gimp     # free image editing utility much like photoshop
-        inkscape # free vector graphics editor
+        #gimp     # free image editing utility much like photoshop
+        #inkscape # free vector graphics editor
     ];
 
     in
@@ -79,7 +75,6 @@
         glow                                                                         # cli markdown renderer
         (nerdfonts.override { fonts = ["Hack"]; enableWindowsFonts = vars.isWsl; })  # Hack font with several font icon sets patched
     ] ++ lib.lists.optionals vars.shouldInstallVideo videoUtils 
-      ++ lib.lists.optionals vars.shouldInstallAudio audioUtils 
       ++ lib.lists.optionals (vars.shouldInstallAudio && vars.isGui) audioApps 
       ++ lib.lists.optionals vars.shouldInstallApps apps
       ++ lib.lists.optionals (vars.shouldInstallImage && vars.isGui) imageApps;
