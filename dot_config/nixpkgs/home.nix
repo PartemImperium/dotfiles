@@ -1,26 +1,14 @@
     { config, lib, pkgs, ... }:
-
-    let
-    vars = import ./variables.nix;
-    fileHelpers = import ./fileHelpers.nix { lib = lib; };
-    in
     {
     # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;
 
-    imports = 
-          lib.lists.optionals vars.isDarwin (fileHelpers.validNixFiles ./darwin)
-       ++ lib.lists.optionals vars.isLinux (fileHelpers.validNixFiles ./linux)
-       ++ lib.lists.optionals vars.isWsl (fileHelpers.validNixFiles ./wsl)
-       ++ (fileHelpers.validNixFiles ./pkgsConfig)
-       # The work modules are not tracked in git. They are added manually on my work computer for anything that is work specific (and I dont want in source control). 
-       # They are also added after everything else so that they can override settings set in other configs.
-       ++ lib.lists.optionals vars.isWork (fileHelpers.validNixFiles ./work); 
+    imports = [ ./imports.nix ];
 
     # Home Manager needs a bit of information about you and the
     # paths it should manage.
-    home.username = vars.username;
-    home.homeDirectory = vars.homeDirectory;
+    home.username = config.variables.user.name;
+    home.homeDirectory = config.variables.user.homeDirectory;
 
     # This value determines the Home Manager release that your
     # configuration is compatible with. This helps avoid breakage

@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 {  
     programs.vscode = {
         extensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [

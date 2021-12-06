@@ -1,7 +1,4 @@
-{ pkgs, ... }:
-let 
-    vars = import ../../../../variables.nix;
-in
+{ pkgs, lib, config, ... }:
 {
     programs.zsh = {
         plugins = [
@@ -19,6 +16,6 @@ in
     };
 
     home.packages = [# Hack font with several font icon sets patched (used by p10k theme)
-        (pkgs.nerdfonts.override { fonts = ["Hack"]; enableWindowsFonts = vars.isWsl; })
+        (pkgs.nerdfonts.override { fonts = ["Hack"]; enableWindowsFonts = config.variables.system.isWsl; })
     ];
 }

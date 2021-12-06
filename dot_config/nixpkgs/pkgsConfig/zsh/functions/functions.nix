@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 let
     fileHelpers = import ../../../fileHelpers.nix { lib = lib; };
 in

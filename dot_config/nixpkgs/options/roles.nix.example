@@ -1,0 +1,8 @@
+{config, ... }:
+{
+    config.variables.roles = {
+        audio = true;
+        video = true;
+        image = true;
+    };
+}

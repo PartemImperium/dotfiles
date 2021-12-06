@@ -1,3 +1,4 @@
 .DS_Store
 
 dot_config/nixpkgs/work
+dot_config/nixpkgs/options
