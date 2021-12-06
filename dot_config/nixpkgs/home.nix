@@ -14,11 +14,6 @@
         #handbrake    # video encoder
     ];
 
-
-    imageApps = with pkgs; [     
-        #inkscape # free vector graphics editor
-    ];
-
     in
 
     {
@@ -55,7 +50,5 @@
 
     nixpkgs.config.allowUnfree = true;
 
-    home.packages = 
-         lib.lists.optionals vars.shouldInstallVideo videoUtils 
-      ++ lib.lists.optionals (vars.shouldInstallImage && vars.isGui) imageApps;
+    home.packages = lib.lists.optionals vars.shouldInstallVideo videoUtils;
 }
