@@ -15,8 +15,7 @@
     ];
 
 
-    imageApps = with pkgs; [
-        #gimp     # free image editing utility much like photoshop
+    imageApps = with pkgs; [     
         #inkscape # free vector graphics editor
     ];
 
