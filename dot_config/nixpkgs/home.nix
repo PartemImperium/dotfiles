@@ -14,9 +14,6 @@
         #handbrake    # video encoder
     ];
 
-    audioApps = with pkgs; [
-#        picard # audio tagging program
-    ];
 
     imageApps = with pkgs; [
         #gimp     # free image editing utility much like photoshop
@@ -61,6 +58,5 @@
 
     home.packages = 
          lib.lists.optionals vars.shouldInstallVideo videoUtils 
-      ++ lib.lists.optionals (vars.shouldInstallAudio && vars.isGui) audioApps 
       ++ lib.lists.optionals (vars.shouldInstallImage && vars.isGui) imageApps;
 }
