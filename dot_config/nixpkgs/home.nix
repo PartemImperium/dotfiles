@@ -6,23 +6,13 @@
     vars = import ./variables.nix;
     fileHelpers = import ./fileHelpers.nix { lib = lib; };
 
-    #Package Lists.
-    #Each list can be added to the home.packages array wth a ++. 
-
-    videoUtils = with pkgs; [
-        #makemkv      # bluray ripping tool # I still need to get config all set up for this one    
-    ];
-
     in
-
     {
     # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;
 
-    imports = [ 
-        # Put common imports here.
-        
-     ] ++ lib.lists.optionals vars.isDarwin (fileHelpers.validNixFiles ./darwin)
+    imports = 
+          lib.lists.optionals vars.isDarwin (fileHelpers.validNixFiles ./darwin)
        ++ lib.lists.optionals vars.isLinux (fileHelpers.validNixFiles ./linux)
        ++ lib.lists.optionals vars.isWsl (fileHelpers.validNixFiles ./wsl)
        ++ (fileHelpers.validNixFiles ./pkgsConfig)
@@ -48,6 +38,4 @@
     fonts.fontconfig.enable = true;
 
     nixpkgs.config.allowUnfree = true;
-
-    home.packages = lib.lists.optionals vars.shouldInstallVideo videoUtils;
 }
