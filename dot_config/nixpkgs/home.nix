@@ -11,7 +11,6 @@
 
     videoUtils = with pkgs; [
         #makemkv      # bluray ripping tool # I still need to get config all set up for this one    
-        #handbrake    # video encoder
     ];
 
     in
