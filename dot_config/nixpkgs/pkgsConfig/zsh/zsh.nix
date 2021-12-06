@@ -1,7 +1,11 @@
 { config, lib, pkgs, ... }:
+let 
+    vars = import ../../variables.nix;
+    isEnabled = true;# This is just a direct assingment here but others may have more logic and keeping things standardized makes it easier to work with.
+in
 {
     programs.zsh = {
-        enable = true;
+        enable = isEnabled;
 
         # Move zsh dotfiles into a seperate directory as they are managed by nix and they just clutter up the home dirictory
         dotDir = ".config/zsh";
@@ -37,5 +41,5 @@
         };
         #TODO: look into adding compiling to the plugins 
     };
-    home.packages = [ pkgs.zsh ];
+    home.packages = lib.lists.optionals isEnabled [ pkgs.zsh ];
 }
