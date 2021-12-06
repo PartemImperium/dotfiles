@@ -20,5 +20,5 @@ in
             };
         };
     };
-        home.packages = lib.lists.optionals isEnabled [ pkgs.git ];
+    home.packages = lib.lists.optionals isEnabled [ pkgs.git ];
 }
