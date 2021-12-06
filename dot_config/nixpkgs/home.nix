@@ -18,10 +18,6 @@
 #        picard # audio tagging program
     ];
 
-    apps = with pkgs; [
-        # vlc    # audio and video player 
-    ];
-
     imageApps = with pkgs; [
         #gimp     # free image editing utility much like photoshop
         #inkscape # free vector graphics editor
@@ -66,6 +62,5 @@
     home.packages = 
          lib.lists.optionals vars.shouldInstallVideo videoUtils 
       ++ lib.lists.optionals (vars.shouldInstallAudio && vars.isGui) audioApps 
-      ++ lib.lists.optionals vars.shouldInstallApps apps
       ++ lib.lists.optionals (vars.shouldInstallImage && vars.isGui) imageApps;
 }
