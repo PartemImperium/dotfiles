@@ -1,11 +1,8 @@
     { config, lib, pkgs, ... }:
 
     let
-    unstable = import <nixpkgs-unstable> { config = pkgs.config; };
-    nixgl = import <nixgl> { pkgs = unstable; };
     vars = import ./variables.nix;
     fileHelpers = import ./fileHelpers.nix { lib = lib; };
-
     in
     {
     # Let Home Manager install and manage itself.
