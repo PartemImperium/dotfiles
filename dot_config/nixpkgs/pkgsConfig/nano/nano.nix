@@ -1,8 +1,17 @@
 { pkgs, lib, config, ... }:
+with lib;
 let 
-    # This is just a direct assingment here but others may have more logic and keeping things standardized makes it easier to work with.
-    isEnabled = true;
+    cfg = config.pkgsConfig.nano;
 in
 {# cli text editor
-    home.packages = lib.lists.optionals isEnabled [ pkgs.nano ];
+    options.pkgsConfig.nano = {
+        enable = mkOption {# Im using mkOption instead of mkEnableOption as you cant set the default of mkEnableOption and until I have all of the modules using options I will pull the defaults out and put them in a install by roles module.
+            description = "Whether to enable nano.";
+            type = types.bool;
+            default = true;
+        };
+    };
+    config = mkIf cfg.enable {
+        home.packages = [ pkgs.nano ];
+    };
 }

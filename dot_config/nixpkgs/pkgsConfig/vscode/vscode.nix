@@ -1,14 +1,21 @@
 { pkgs, lib, config, ... }:
+with lib;
 let 
-    # This is just a direct assingment here but others may have more logic and keeping things standardized makes it easier to work with.
-    isEnabled = config.variables.system.isGui;
+    cfg = config.pkgsConfig.vscode;
 in
 {# Text editor on steroids
-   
-    programs.vscode = {#TODO: manage settings for vsc
-        enable = isEnabled;
+    options.pkgsConfig.vscode = {
+        enable = mkOption {# Im using mkOption instead of mkEnableOption as you cant set the default of mkEnableOption and until I have all of the modules using options I will pull the defaults out and put them in a install by roles module.
+            description = "Whether to enable vscode.";
+            type = types.bool;
+            default = config.variables.system.isGui;
+        };
     };
-   
-    home.packages = lib.lists.optionals isEnabled [ pkgs.vscode ];
+    config = mkIf cfg.enable {
+        home.packages = [ pkgs.vscode ]; #TODO: I dont think this is needed
+        programs.vscode = {#TODO: manage settings for vsc
+            enable = true;
+        };
+    };
 }
     
