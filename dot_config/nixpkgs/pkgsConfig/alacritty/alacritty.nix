@@ -5,11 +5,7 @@ let
 in
 {# Terminal emulator that works cross platform.
     options.pkgsConfig.alacritty = {
-        enable = mkOption {# Im using mkOption instead of mkEnableOption as you cant set the default of mkEnableOption and until I have all of the modules using options I will pull the defaults out and put them in a install by roles module.
-            description = "Whether to enable alacritty.";
-            type = types.bool;
-            default = config.variables.system.isGui;
-        };
+        enable = mkEnableOption "alacritty";
     };
     config = mkIf cfg.enable {
         programs.alacritty = {
