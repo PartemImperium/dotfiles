@@ -7,6 +7,7 @@ in
 {
     imports = 
         fileHelpers.validNixFiles ./options
+     ++ fileHelpers.validNixFiles ./roles   
      ++ optionals vars.isDarwin (fileHelpers.validNixFiles ./darwin)
      ++ optionals vars.isLinux (fileHelpers.validNixFiles ./linux)
      ++ optionals vars.isWsl (fileHelpers.validNixFiles ./wsl)
