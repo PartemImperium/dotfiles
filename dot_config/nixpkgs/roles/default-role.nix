@@ -6,7 +6,7 @@ let
 in
 {
     config.pkgsConfig = {
-        alacritty.enable = true;#TODO: Do isGui
+        alacritty.enable = isGui;
         bat.enable = true;
         chezmoi.enable = true;
         curl.enable = true;
@@ -17,7 +17,7 @@ in
         neofetch.enable = true;
         nix-index.enable = true;
         nix-prefetch-git.enable = true;
-        vscode.enable = true;#TODO: Do isGui
+        vscode.enable = isGui;
         zsh.enable = true;
     };
 }
