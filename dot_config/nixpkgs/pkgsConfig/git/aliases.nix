@@ -4,6 +4,7 @@
         aliases = {
             # Fix Typos
             pish = "push";
+            staus = "status";
         };
     };
 }
