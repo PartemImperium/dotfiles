@@ -11,6 +11,7 @@
             ".." = "cd ..";
 
             # Fix Typo's
+            cds = "cd";
             gity = "git";
             rebooty = "reboot"; # This is happens to be a funny new way to reboot too
         };
