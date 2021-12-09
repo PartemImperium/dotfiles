@@ -8,7 +8,12 @@ in
         enable = mkEnableOption "bat";
     };
     config = mkIf cfg.enable {
-        home.packages = [ pkgs.bat ];
+        programs.bat = {
+            enable = true;
+            config = {
+                paging = "never";
+            };
+        };
     };
-}#TODO: Start figure out what config bat has and set it up here
+}
     
