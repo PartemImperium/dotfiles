@@ -8,7 +8,6 @@ in
         enable = mkEnableOption "zsh";
     };
     config = mkIf cfg.enable {
-        home.packages = [ pkgs.zsh ];#TODO: I dont think this is needed
         programs.zsh = {
             enable = true;
 
