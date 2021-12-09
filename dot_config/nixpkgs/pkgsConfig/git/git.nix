@@ -28,6 +28,5 @@ in
                 };
             };
         };
-        home.packages = [ pkgs.git ]; #TODO: check if needed home-manager enabled should already be installing it
     };
 }
