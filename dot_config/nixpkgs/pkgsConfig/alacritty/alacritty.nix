@@ -21,8 +21,6 @@ in
                 };
             };
         };
-    
-        home.packages = [ pkgs.alacritty ];#TODO: Check if this is needed. Im pretty sure setting the home manager module to enabled will install it
     };
 }
     
