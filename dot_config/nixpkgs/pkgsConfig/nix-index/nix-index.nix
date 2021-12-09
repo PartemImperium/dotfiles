@@ -12,7 +12,6 @@ in
         enable = true;
         enableZshIntegration = true;
       };
-      home.packages = [ pkgs.nix-index ];#TODO: I dont think this is needed.
     };
 }
     
