@@ -11,8 +11,13 @@ in
         programs.alacritty = {
             enable = true;
 
-            # TODO: Change the theme to be more how I would want it. The default isnt bad but not the best.
             settings = {
+                window = {
+                    dynamic_title = true;
+                };
+                scrolling = {
+                    history = 10000; #TODO: Make a general teminal config and use it both here and in vscode's integrated terminal
+                };
                 font = {
                     normal =  {
                         family = "Hack Nerd Font Mono";
