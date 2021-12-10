@@ -16,6 +16,7 @@ in
         nano.enable = true;
         neofetch.enable = true;
         nix-index.enable = true;
+        nix-prefetch.enable = true;
         nix-prefetch-git.enable = true;
         vscode.enable = isGui;
         zsh.enable = true;
