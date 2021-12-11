@@ -12,4 +12,3 @@ in
         youtube-dl.enable = true;
     };
 }
-    
