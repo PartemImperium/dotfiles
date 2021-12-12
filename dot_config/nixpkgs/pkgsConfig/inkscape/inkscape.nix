@@ -7,7 +7,8 @@ in
     options.pkgsConfig.inkscape = {
         enable = mkEnableOption "inkscape";
     };
-    config = mkIf (cfg.enable && false) {#TODO: remove this hard false and figure out why it isnt building for me
+    config = mkIf (cfg.enable) {
+        #TODO: Look into https://gitlab.com/inkscape/inkscape/-/issues/2291 and https://gitlab.com/inkscape/inkscape/-/blob/82801abe77a62fba25636074254bf468a2ffd3cb/src/shortcuts.cpp#L676 to fix launch issue
         home.packages = [ pkgs.inkscape ];
     };
 }
