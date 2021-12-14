@@ -25,8 +25,8 @@ rec {
     dir 
     (f: 
         (lib.hasSuffix ".nix" f) 
-        && (f != "default.nix") 
-        && (!lib.hasSuffix "-hm.nix" f)
+     && (f != "default.nix") 
+     && (!lib.hasSuffix "-hm.nix" f)
     );
 
     # Filters out directories that don't end with .zsh, also makes the strings absolute

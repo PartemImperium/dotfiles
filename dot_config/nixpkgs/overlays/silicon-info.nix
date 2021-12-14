@@ -9,6 +9,14 @@ self: super: {
             stripRoot = false;
         };
 
+        #TODO: Look into building from source using xcbuild
+        #src = fetchFromGitHub {
+        #    owner = "billycastelli";
+        #    repo = "Silicon-Info";
+        #    rev = "${version}";
+        #    sha256 = "1gfs92y7rkkv75llwj2bvapqn36jmx19fx14pz4y6lg28prcmnml";
+        #};
+
         installPhase = ''
             mkdir -p $out/Applications
             mv "Silicon Info.app" $out/Applications

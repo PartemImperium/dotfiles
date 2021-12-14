@@ -7,7 +7,7 @@ in
     options.pkgsConfig.youtube-dl = {
         enable = mkEnableOption "youtube-dl";
     };
-    config = mkIf cfg.enable {
+    config = mkIf cfg.enable {#TODO: Look into swapping to yt-dlp (it is apperently better maintained.)
         home.packages = [ pkgs.youtube-dl ];
     };
 }
