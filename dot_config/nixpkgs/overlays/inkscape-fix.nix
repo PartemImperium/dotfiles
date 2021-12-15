@@ -8,11 +8,10 @@ self: super: {
         mkdir -p $out/Applications/Inkscape.app/Contents/MacOS
         makeWrapper $out/bin/inkscape $out/Applications/Inkscape.app/Contents/MacOS/inkscape
 
-        mkdir -p $out/Applications/Inkscape.app/Contents/Resources
+        mkdir -p $out/Applications/Inkscape.app/Contents/Resources/
+        cp -r ../packaging/macos/resources/. $out/Applications/Inkscape.app/Contents/Resources/    
 
-        ls
-
-        #cp packaging/macos/inkscape.plist $out/Applications/Inkscape.app/Contents/Info.plist
+        cp ../packaging/macos/inkscape.plist $out/Applications/Inkscape.app/Contents/Info.plist
         '';
     });
 }
