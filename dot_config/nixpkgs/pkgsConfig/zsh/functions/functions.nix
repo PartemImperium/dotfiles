@@ -1,7 +1,4 @@
 { pkgs, lib, config, ... }:
-let
-    fileHelpers = import ../../../fileHelpers.nix { lib = lib; };
-in
 {
     programs.zsh = {
         plugins = map (function:
@@ -15,6 +12,6 @@ in
             file = fileName;
             src = dir;
         })
-        (fileHelpers.validZshFiles ./.);
+        (pkgs.myLib.file.validZshFiles ./.);
     };
 }

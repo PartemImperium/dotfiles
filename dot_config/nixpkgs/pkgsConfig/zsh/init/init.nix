@@ -1,14 +1,11 @@
 { pkgs, lib, config, ... }:
-let
-    fileHelpers = import ../../../fileHelpers.nix { lib = lib; };
-in
 {
     programs.zsh = {
         # Load in all the zsh files in the initExtra, initExtraBeforeCompInit, and initExtraFirst directories into the config. 
         # This allows for adding stuff to the .zshrc file (in the specified spots) from normal zsh files (where a editor will have zsh syntax highlighting).
         # This also allows breaking the content being added up into several smaller files.
-        initExtra = fileHelpers.combineFiles (fileHelpers.validZshFiles ./initExtra);
-        initExtraBeforeCompInit = fileHelpers.combineFiles (fileHelpers.validZshFiles ./initExtraBeforeCompInit);
-        initExtraFirst = fileHelpers.combineFiles (fileHelpers.validZshFiles ./initExtraFirst);
+        initExtra = pkgs.myLib.file.combineFiles (pkgs.myLib.file.validZshFiles ./initExtra);
+        initExtraBeforeCompInit = pkgs.myLib.file.combineFiles (pkgs.myLib.file.validZshFiles ./initExtraBeforeCompInit);
+        initExtraFirst = pkgs.myLib.file.combineFiles (pkgs.myLib.file.validZshFiles ./initExtraFirst);
     };
 }

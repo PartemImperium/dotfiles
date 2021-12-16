@@ -1,8 +1,9 @@
 { config, lib, pkgs, options, ... }:
 with lib.lists;
 let
-vars = import ./variables.nix;
-fileHelpers = import ./fileHelpers.nix { lib = lib; };
+    vars = import ./variables.nix;
+    #This one cant use myLib from my overlay as it causes infinite recursion......
+    fileHelpers = import ./fileHelpers.nix { lib = lib; };
 in
 {
     imports = 
