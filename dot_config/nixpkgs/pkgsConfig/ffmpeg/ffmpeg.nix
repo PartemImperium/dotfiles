@@ -6,9 +6,14 @@ in
 {# video encoder
 options.pkgsConfig.ffmpeg = {
         enable = mkEnableOption "ffmpeg";
+
+        package = mkOption {
+            type = types.package;
+            default = pkgs.ffmpeg;
+        };
     };
     config = mkIf cfg.enable {
-        home.packages = [ pkgs.ffmpeg ];
+        home.packages = [ cfg.package ];
     };
 }
     

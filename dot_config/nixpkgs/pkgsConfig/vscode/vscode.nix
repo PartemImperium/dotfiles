@@ -6,10 +6,16 @@ in
 {# Text editor on steroids
     options.pkgsConfig.vscode = {
         enable = mkEnableOption "vscode";
+
+        package = mkOption {
+            type = types.package;
+            default = pkgs.vscode;#TODO: Look into swapping to codeium
+        };
     };
     config = mkIf cfg.enable {
         programs.vscode = {
             enable = true;
+            package = cfg.package;
 
             userSettings = {
                 "editor.renderWhitespace" = "all";

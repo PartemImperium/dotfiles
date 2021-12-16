@@ -6,8 +6,13 @@ in
 {# cli text editor
     options.pkgsConfig.nano = {
         enable = mkEnableOption "nano";
+
+        package = mkOption {
+            type = types.package;
+            default = pkgs.nano;
+        };
     };
     config = mkIf cfg.enable {
-        home.packages = [ pkgs.nano ];
+        home.packages = [ cfg.package ];
     };
 }

@@ -2,14 +2,20 @@
 with lib;
 let 
     cfg = config.pkgsConfig.alacritty;
-in
+in#TODO: Find out why/make it launch a new instace every time opened
 {# Terminal emulator that works cross platform.
     options.pkgsConfig.alacritty = {
         enable = mkEnableOption "alacritty";
+
+        package = mkOption {
+            type = types.package;
+            default = pkgs.alacritty;
+        };
     };
     config = mkIf cfg.enable {
         programs.alacritty = {
             enable = true;
+            package = cfg.package;
 
             settings = {
                 window = {

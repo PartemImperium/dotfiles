@@ -6,9 +6,14 @@ in
 {# video encoder
     options.pkgsConfig.handbrake = {
         enable = mkEnableOption "handbrake";
+
+        package = mkOption {
+            type = types.package;
+            default = pkgs.handbrake;
+        };
     };
     config = mkIf (cfg.enable && false) {#TODO: remove this hard false and figure out why it isnt building for me
-        home.packages = [ pkgs.handbrake ];
+        home.packages = [ cfg.package ];
     };
 }
     

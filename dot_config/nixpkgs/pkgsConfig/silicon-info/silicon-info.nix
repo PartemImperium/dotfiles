@@ -6,8 +6,13 @@ in
 {# Silicon Info is a tiny menu bar application allows the user to quickly view the architecture of the currently running application.
     options.pkgsConfig.silicon-info = {
         enable = mkEnableOption "silicon-info";
+
+        package = mkOption {
+            type = types.package;
+            default = pkgs.silicon-info;
+        };
     };
     config = mkIf (cfg.enable) {
-        home.packages = [ pkgs.silicon-info ];
+        home.packages = [ cfg.package ];
     };
 }

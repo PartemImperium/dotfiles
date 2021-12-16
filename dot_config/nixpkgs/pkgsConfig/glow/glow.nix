@@ -6,9 +6,14 @@ in
 {# cli markdown renderer
     options.pkgsConfig.glow = {
         enable = mkEnableOption "glow";
+
+        package = mkOption {
+            type = types.package;
+            default = pkgs.glow;
+        };
     };
     config = mkIf cfg.enable {
-        home.packages = [ pkgs.glow ];
+        home.packages = [ cfg.package ];
     };
 }
     

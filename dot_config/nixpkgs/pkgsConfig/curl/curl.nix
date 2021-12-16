@@ -6,8 +6,13 @@ in
 {# cli tool to download files
     options.pkgsConfig.curl = {
         enable = mkEnableOption "curl";
+
+        package = mkOption {
+            type = types.package;
+            default = pkgs.curl;
+        };
     };
     config = mkIf cfg.enable {
-        home.packages = [ pkgs.curl ];
+        home.packages = [ cfg.package ];
     };
 }
