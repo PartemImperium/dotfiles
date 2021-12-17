@@ -22,11 +22,11 @@ in#TODO: Find out why/make it launch a new instace every time opened
                     dynamic_title = true;
                 };
                 scrolling = {
-                    history = 10000; #TODO: Make a general teminal config and use it both here and in vscode's integrated terminal
+                    history = config.pkgsConfig.shared.terminal.lineBufferSize;
                 };
                 font = {
                     normal =  {
-                        family = "Hack Nerd Font Mono";
+                        family = config.pkgsConfig.shared.terminal.font;
                     };
                     "use_thin_strokes" = true;
                 };

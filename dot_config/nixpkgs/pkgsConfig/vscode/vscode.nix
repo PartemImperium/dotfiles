@@ -29,7 +29,8 @@ in
                 # Terminal settings
                 "terminal.external.osxExec" = "${pkgs.alacritty}/Applications/Alacritty.app";
                 "terminal.external.linuxExec" = "${pkgs.alacritty}/bin/alacritty";
-                "terminal.integrated.fontFamily" = "Hack Nerd Font Mono";
+                "terminal.integrated.fontFamily" = config.pkgsConfig.shared.terminal.font;
+                "terminal.integrated.scrollback" = config.pkgsConfig.shared.terminal.lineBufferSize;
             };
         };
     };
