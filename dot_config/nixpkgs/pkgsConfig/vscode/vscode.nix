@@ -9,7 +9,7 @@ in
 
         package = mkOption {
             type = types.package;
-            default = pkgs.vscode;#TODO: Look into swapping to codeium
+            default = pkgs.vscode;
         };
     };
     config = mkIf cfg.enable {

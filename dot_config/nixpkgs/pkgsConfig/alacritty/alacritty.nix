@@ -2,7 +2,7 @@
 with lib;
 let 
     cfg = config.pkgsConfig.alacritty;
-in#TODO: Find out why/make it launch a new instace every time opened
+in
 {# Terminal emulator that works cross platform.
     options.pkgsConfig.alacritty = {
         enable = mkEnableOption "alacritty";

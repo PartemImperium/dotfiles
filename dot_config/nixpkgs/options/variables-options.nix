@@ -1,6 +1,6 @@
 { lib, pkgs, config, ... }:
 with lib; 
-{#TODO: Move logic for if a app (and its config) are enabled here per role instead of in each indivisual app module.
+{
     options.variables = {
         roles = {
             audio = mkOption {
