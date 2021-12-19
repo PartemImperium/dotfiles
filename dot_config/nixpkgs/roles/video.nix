@@ -10,5 +10,6 @@ in
         handbrake.enable = true;
         makemkv.enable = true;
         youtube-dl.enable = true;
+        simple-syphon.enable = isGui;
     };
 }
