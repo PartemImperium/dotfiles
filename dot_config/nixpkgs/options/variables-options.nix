@@ -18,6 +18,11 @@ with lib;
                 type = types.bool;
                 default = false;
             };
+            av-production = mkOption {
+                description = "Should AV Production apps be installed?";
+                type = types.bool;
+                default = false;
+            };
         };
         system = {
             isDarwin = mkOption {
