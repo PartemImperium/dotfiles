@@ -23,6 +23,11 @@ with lib;
                 type = types.bool;
                 default = false;
             };
+            home-lab = mkOption {
+                description = "Should HomeLab apps be installed?";
+                type = types.bool;
+                default = false;
+            };
         };
         system = {
             isDarwin = mkOption {
