@@ -18,7 +18,7 @@ self: super: {
 
         meta = with lib; {
             description = "Simple Client and Simple Server demo and testbed applications for Syphon.";
-            license = licenses.mit;#TODO: Check license
+            #license = licenses.mit;#TODO: Check license
             homepage = "https://github.com/Syphon/Simple";
             platforms = platforms.darwin;
         };
