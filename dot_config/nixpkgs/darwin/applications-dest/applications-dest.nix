@@ -14,7 +14,7 @@
         $DRY_RUN_CMD rm -rf "$baseDir"
     fi
     mkdir -p "$baseDir"
-    Rez -append ~/.config/nixpkgs/darwin/applications-dest/home-manager-applications-icon.rsrc -o "$baseDir"$'/Icon\r'
+    Rez -append ${./.}/home-manager-applications-icon.rsrc -o "$baseDir"$'/Icon\r'
     SetFile -a C "$baseDir"
     SetFile -a V "$baseDir"$'/Icon\r'
     for appFile in ${apps}/Applications/*; do
