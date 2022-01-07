@@ -1,6 +1,6 @@
 { pkgs, lib, config, ... }:
 {  
-    programs.vscode = {
+    programs.vscode = {#TODO: Put this behind a role
         extensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
             {
                 name = "vscode-home-assistant";
