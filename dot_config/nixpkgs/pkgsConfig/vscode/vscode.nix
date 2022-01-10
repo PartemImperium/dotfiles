@@ -33,6 +33,9 @@ in
                 "terminal.integrated.scrollback" = config.pkgsConfig.shared.terminal.lineBufferSize;
             };
         };
+
+        # Install shell script to show the expression to add all current extensions with nix
+        home.packages = [ pkgs.update-nix-vsc-ext ];
     };
 }
     #TODO: https://marketplace.visualstudio.com/items?itemName=pflannery.vscode-versionlens
