@@ -16,7 +16,7 @@ in
       programs.nix-index = {
         enable = true;
         package = cfg.package;
-        enableZshIntegration = true;
+        enableZshIntegration = config.pkgsConfig.zsh.enable;
       };
     };
 }
