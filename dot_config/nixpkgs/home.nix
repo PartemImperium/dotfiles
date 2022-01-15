@@ -23,6 +23,7 @@
     fonts.fontconfig.enable = true;
 
     nixpkgs.config.allowUnfree = true;
+
     #TODO: Add preview zsh function qlmanage -p update-nix-vsc-ext.sh &> /dev/null  
     #TODO: Add Plex app..... (curently running out of downloads folder)
     #TODO: Look into installing this (and its prereqs) https://github.com/dado3212/spaces-renamer
@@ -38,4 +39,12 @@
     #TODO: Figure out ssh config (~/.ssh/config) (mainly for git ssh keys) 
     #TODO: Add https://github.com/samuelmeuli/glance (likely first bin download)
     #TODO: Manage ~/.nuget/NuGet/NuGet.Config
+    #TODO: Look into using raycast instead of spotlight
+    #TODO: Look into using callPackage 
+    #           https://stackoverflow.com/questions/56121361/where-is-callpackage-defined-in-the-nixpkgs-repo-or-how-to-find-nix-lambda-de
+    #           https://nixos.org/guides/nix-pills/callpackage-design-pattern.html
+    #TODO: Look into flakes...
+    #           This is a good example that has multi machine config and multi hardware config.
+    #               https://github.com/reckenrode/nixos-configs/tree/withAppBundle-PoC
+    #TODO: look into plist generator https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/applications/networking/instant-messengers/mikutter/default.nix#L57-L68
 }
