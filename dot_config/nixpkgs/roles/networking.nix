@@ -7,6 +7,7 @@ in
 {
     config.pkgsConfig = mkIf cfg.networking {
         netcat.enable = true;
+        wireshark.enable = isGui;
     };
 }
     
