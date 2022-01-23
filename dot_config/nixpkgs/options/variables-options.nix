@@ -28,6 +28,11 @@ with lib;
                 type = types.bool;
                 default = false;
             };
+            networking = mkOption {
+                description = "Should networking apps be installed?";
+                type = types.bool;
+                default = false;
+            };
         };
         system = {
             isDarwin = mkOption {
@@ -51,19 +56,9 @@ with lib;
                 default = false;
             };
             isWork = mkOption {
-                description = "Is this a computer? This is used to decide if modules in the work folder are loaded. They should not be kept in source control as they hold work specifc info.";
+                description = "Is this a work computer? This is used to decide if modules in the work folder are loaded. They should not be kept in source control as they hold work specifc info.";
                 type = types.bool;
                 default = false;
-            };
-        };
-        user = {
-            name = mkOption {
-                description = "Username of the current user. This will be used to set the home-mamager username";
-                type = types.str;
-            };
-            homeDirectory = mkOption {
-                description = "Home directory of the current user. This will be used to set the home-mamager username";
-                type = types.str;
             };
         };
     };
