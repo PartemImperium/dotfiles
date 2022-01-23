@@ -7,8 +7,4 @@
     isLinux = {{ if (eq .chezmoi.os "linux") }}true{{ else }}false{{ end }};
     isGui = true;#TODO: Figure out a way to set this with chezmoi
     isWork = true;#TODO: Move this??? Or figure out a way to this here and not have to change the value here....
-
-    # User Info
-    username = "{{ .chezmoi.username }}";
-    homeDirectory = "{{ .chezmoi.homeDir }}";
 }

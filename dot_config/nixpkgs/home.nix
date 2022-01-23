@@ -5,20 +5,22 @@
 
     imports = [ ./imports.nix ];
 
-    # Home Manager needs a bit of information about you and the
-    # paths it should manage.
-    home.username = config.variables.user.name;
-    home.homeDirectory = config.variables.user.homeDirectory;
+    home = {
+        # Home Manager needs a bit of information about you and the
+        # paths it should manage.
+        username = builtins.getEnv "USER";
+        homeDirectory = builtins.getEnv "HOME";
 
-    # This value determines the Home Manager release that your
-    # configuration is compatible with. This helps avoid breakage
-    # when a new Home Manager release introduces backwards
-    # incompatible changes.
-    #
-    # You can update Home Manager without changing this value. See
-    # the Home Manager release notes for a list of state version
-    # changes in each release.
-    home.stateVersion = "22.05";
+        # This value determines the Home Manager release that your
+        # configuration is compatible with. This helps avoid breakage
+        # when a new Home Manager release introduces backwards
+        # incompatible changes.
+        #
+        # You can update Home Manager without changing this value. See
+        # the Home Manager release notes for a list of state version
+        # changes in each release.
+        stateVersion = "22.05";
+    };
 
     fonts.fontconfig.enable = true;
 
@@ -47,4 +49,6 @@
     #           This is a good example that has multi machine config and multi hardware config.
     #               https://github.com/reckenrode/nixos-configs/tree/withAppBundle-PoC
     #TODO: look into plist generator https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/applications/networking/instant-messengers/mikutter/default.nix#L57-L68
+    #TODO: update readme... It isnt particularly up to date.....
+    #TODO: Look into secrets https://nixos.wiki/wiki/Comparison_of_secret_managing_schemes
 }
