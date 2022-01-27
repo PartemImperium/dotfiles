@@ -11,9 +11,5 @@ in
             isGui = vars.isGui;
             isWork = vars.isWsl;
         };
-        user = {
-            name = vars.username;
-            homeDirectory = vars.homeDirectory;
-        };
     };
 }
