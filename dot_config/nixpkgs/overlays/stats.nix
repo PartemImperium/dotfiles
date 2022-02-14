@@ -1,11 +1,11 @@
 self: super: {
     stats = with super; stdenv.mkDerivation rec {
         pname = "stats";
-        version = "2.6.26";
+        version = "2.7.5";
 
         src = fetchurl { #TODO: Create package from source instead of using pre built binary.
             url = "https://github.com/exelban/stats/releases/download/v${version}/Stats.dmg";
-            sha256 = "9ZJUWiXuaoqkeSyBpHmQIyFUFf+mO0ehExecsNpSCyU=";
+            sha256 = "sLqk5dDM06nnOYPUfZNS5gkNwWXOGEGUAqOcPnCU79A=";
         };
 
         sourceRoot = ".";
